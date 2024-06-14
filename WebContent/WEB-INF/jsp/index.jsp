@@ -30,8 +30,11 @@
 			掲示板
 			<a href="/B2/BoardServlet"></a>
 		</div>
-		<div>リストで作る？
+		<div>
 			メンバー
+			<ul>
+				<li></li>
+			</ul>
 		</div>
 		<div>
 			消耗品在庫一覧
@@ -41,10 +44,22 @@
 			やることリスト
 			<a href="/B2/TodoServlet"></a>
 		</div>
+		<div>
+			全体の支出
+			<a href="/B2/ExpenseServlet"></a>
+		</div>
+		<div>
+			今日のイベント
+			<a href="/B2/ScheduleServlet"></a>
+		</div>
+
 
 
 
 
 	</main>
+	<footer>
+
+	</footer>
 </body>
 </html>

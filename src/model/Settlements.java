@@ -11,6 +11,10 @@ public class Settlements implements Serializable{
 	private boolean settlement_approval; //承認済みフラグ
 	private int settlement_date; //精算日
 
+	public Settlements() {
+
+	}
+
 	public Settlements(int ID, int users_id, int expenses_id, boolean settlement_finish, boolean settlement_approval,
 			int settlement_date) {
 		super();

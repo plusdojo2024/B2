@@ -9,6 +9,10 @@ public class Schedules implements Serializable {
 	private String text; //詳細
 	private int date; //日時
 
+	public Schedules() {
+
+	}
+
 	public Schedules(int ID, int users_id, String title, String text, int date) {
 		super();
 		this.ID = ID;

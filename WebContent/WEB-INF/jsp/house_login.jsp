@@ -12,7 +12,7 @@
 		<div>
  			<h1>新規家登録</h1>
 
- 			<form method="post" action="/B2/HouseSelectServlet">
+ 			<form method="post" action="/B2/HouseRegistServlet">
  				<table>
  					<tr>
  						<td>家の名前</td>
@@ -30,7 +30,7 @@
 		<div>
 			<h1>家に参加</h1>
 
- 			<form method="post" action="/B2/HouseSelectServlet">
+ 			<form method="post" action="/B2/HouseJoinServlet">
  				<table>
  					<tr>
  						<td>ID</td>

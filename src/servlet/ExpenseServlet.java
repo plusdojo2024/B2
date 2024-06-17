@@ -2,7 +2,10 @@ package servlet;
 
 import java.io.IOException;
 
+<<<<<<< HEAD
 import javax.servlet.RequestDispatcher;
+=======
+>>>>>>> 0b006c4d375b732ffca364760eff4cb91e51fb99
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,17 +31,18 @@ public class ExpenseServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/expense.jsp");
 		dispatcher.forward(request, response);
 
+=======
+>>>>>>> 0b006c4d375b732ffca364760eff4cb91e51fb99
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

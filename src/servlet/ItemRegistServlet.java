@@ -2,10 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
-<<<<<<< HEAD:src/servlet/ItemRegistServlet.java
-=======
 import javax.servlet.RequestDispatcher;
->>>>>>> 8751786670b28e5ea5bea88fdc675442bcc23984:src/servlet/ItemServlet.java
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

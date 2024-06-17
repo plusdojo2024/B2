@@ -16,7 +16,7 @@
 			<input type="checkbox" name="">洗濯
 		</div>
 		<div>
-			在庫チェック
+			在庫チェック<br>
 			<input type="checkbox" name="">洗剤
 		</div>
 		<input type="submit" value="更新">
@@ -28,7 +28,7 @@
 			<input type="checkbox" name="">高橋：洗濯
 		</div>
 		<div>
-			在庫チェック
+			在庫チェック<br>
 			<input type="checkbox" name="">高橋：洗剤
 		</div>
 	</div>

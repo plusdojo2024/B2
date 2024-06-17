@@ -11,52 +11,56 @@
 <body>
 	<main>
 		<div>
-			家事管理
-			<a href="/B2/TaskServlet"></a>
+			<div>
+				<div>
+					<img src="img/task.png"><br>
+					<p>家事管理</p>
+					<a href="/B2/TaskServlet"></a>
+				</div>
+				<div>
+					<img src="img/expense.png"><br>
+					<p>支出管理</p>
+					<a href="/B2/SettlementServlet"></a>
+				</div>
+				<div>
+					<img src="img/item.png"><br>
+					<p>消耗品管理</p>
+					<a href="/B2/ItemServlet"></a>
+				</div>
+			</div>
+			<div>
+				<p>カレンダー</p>
+				<a href="/B2/ScheduleServlet"></a>
+				<p>掲示板</p>
+				<a href="/B2/BoardServlet"></a>
+			</div>
 		</div>
 		<div>
-			支出管理
-			<a href="/B2/ExpenseServlet"></a>
+			<div>
+				<p>メンバー</p><br>
+				<ul>
+					<li>谷口</li>
+				</ul>
+			</div>
+			<div>
+				<p>消耗品在庫一覧</p><br>
+				<a href="/B2/ItemServlet"></a>
+			</div>
+			<div>
+				<p>やることリスト</p><br>
+				<a href="/B2/TodoServlet"></a>
+			</div>
 		</div>
 		<div>
-			消耗品管理
-			<a href="/B2/ItemServlet"></a>
+			<div>
+				<p>全体の支出</p><br>
+				<a href="/B2/ExpenseServlet"></a>
+			</div>
+			<div>
+				<p>今日のイベント</p><br>
+				<a href="/B2/ScheduleServlet"></a>
+			</div>
 		</div>
-		<div>
-			カレンダー
-			<a href="/B2/ScheduleServlet"></a>
-		</div>
-		<div>
-			掲示板
-			<a href="/B2/BoardServlet"></a>
-		</div>
-		<div>
-			メンバー
-			<ul>
-				<li></li>
-			</ul>
-		</div>
-		<div>
-			消耗品在庫一覧
-			<a href="/B2/ItemServlet"></a>
-		</div>
-		<div>
-			やることリスト
-			<a href="/B2/TodoServlet"></a>
-		</div>
-		<div>
-			全体の支出
-			<a href="/B2/ExpenseServlet"></a>
-		</div>
-		<div>
-			今日のイベント
-			<a href="/B2/ScheduleServlet"></a>
-		</div>
-
-
-
-
-
 	</main>
 	<footer>
 

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class SignUpServlet
@@ -37,6 +38,16 @@ public class SignUpServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+
+		// リクエストパラメーターを取得
+		request.setCharacterEncoding("UTF-8");
+		String user_name = request.getParameter("user_name");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+
+		//登録処理を行う
+		SignUpDAO signUpDao = new SignUp();
 	}
 
 }

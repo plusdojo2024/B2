@@ -12,9 +12,11 @@
 	<div>
 	<h2>分担一覧</h2><h2>登録</h2><h2>振り分け</h2><!-- 横並び -->
 	</div>
+	<p>自動</p><p>手動</p>
+
+
 	<div>
 	<table>
-		<div>
 		<tr>
 			<th>&nbsp;</th>
 			<th>月</th>
@@ -31,7 +33,7 @@
 		</tr>
 	</table>
 	</div>
-
+	<input type="submit" value="決定">
 
   </main>
 </body>

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<main>
-		<div>
+		<div>					<!-- ユーザーの新規登録画面の表示 -->
 			<h1>新規登録</h1>
 			<form action="/B2/SignUpServlet" method="post">
 			<table>
@@ -30,7 +30,7 @@
 			</form>
 		</div>
 		<hr>
-		<div>
+		<div>					<!-- ユーザーのログイン画面の表示 -->
 			<h1>ログイン</h1>
 			<form action="/B2/LoginServlet" method="post">
 			<table>

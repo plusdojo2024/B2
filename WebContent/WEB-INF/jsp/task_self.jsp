@@ -12,8 +12,13 @@
 	<div>
 	<h2>分担一覧</h2><h2>登録</h2><h2>振り分け</h2><!-- 横並び -->
 	</div>
-	<p>自動</p><p>手動</p>
+	<div>
+		<input type="radio"  name="contact" value="email" />
+		<label for="contactChoice1">自動</label>
 
+		<input type="radio" name="contact" value="phone" />
+		<label for="contactChoice2">手動</label>
+	</div>
 
 	<div>
 	<table>
@@ -27,7 +32,6 @@
 			<th>土</th>
 			<th>日</th>
 		</tr>
-		</div>
 		<tr>
 			<td>名前</td>
 		</tr>

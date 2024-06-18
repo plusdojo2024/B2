@@ -41,10 +41,13 @@ public class LoginServlet extends HttpServlet {
 
 	//ログイン処理を行う
 	UserDAO userDao = new UserDAO();
-	if (userDao.isLoginOK(new Users(0, 0, email, password, 0))) {
-		//セッションスコープにIDを格納する
+	if (userDao.isLoginOK(new Users(0, null, email, password, 0))) {
+		Users user_data = new Users(0, null, email, password, 0);
+		Users userResult = userDao.select(user_data);
+
+		//セッションスコープにUsersのインスタンスを格納する
 		HttpSession session = request.getSession();
-		session.setAttribute("id", new Users(email));
+		session.setAttribute("Users", userResult);
 		// indexサーブレットにリダイレクトする
 		response.sendRedirect("/B2/indexServlet");
 	}

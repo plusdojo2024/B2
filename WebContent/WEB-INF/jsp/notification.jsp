@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<main>
+		<h2>通知</h2>
+
+	</main>
+
 
 </body>
 </html>

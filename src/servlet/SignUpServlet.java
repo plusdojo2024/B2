@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.UserDAO;
+import model.Users;
+
 /**
  * Servlet implementation class SignUpServlet
  */
@@ -46,8 +49,19 @@ public class SignUpServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
-		//登録処理を行う
-		SignUpDAO signUpDao = new SignUp();
+		// 登録処理を行う insert
+		UserDAO userDao = new UserDAO();
+
+		if (userDao.insert(new Users(0,user_name, email, password, 0))) {	// 登録成功
+			System.out.println("登録成功！");
+		}
+		else {											// 登録失敗
+			System.out.println("登録失敗！");
+		}
+
+		//結果をフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_login.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

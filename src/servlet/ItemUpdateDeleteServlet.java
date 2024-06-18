@@ -13,18 +13,26 @@ import dao.ItemDAO;
 import model.Items;
 
 /**
- * Servlet implementation class ItemServlet
+ * Servlet implementation class ItemUpdateDeleteServlet
  */
-@WebServlet("/ItemServlet")
-public class ItemRegistServlet extends HttpServlet {
+@WebServlet("/ItemUpdateDeleteServlet")
+public class ItemUpdateDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ItemUpdateDeleteServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/item.jsp");
-		dispatcher.forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -38,20 +46,31 @@ public class ItemRegistServlet extends HttpServlet {
 		int task_details_id = Integer.parseInt(request.getParameter("task_details_id"));
 		int status = Integer.parseInt(request.getParameter("status"));
 
-		//在庫品の登録処理
 		ItemDAO itemDao = new ItemDAO();
 
-		if(itemDao.insert(new Items(0,item_name, 0, task_details_id , 0))) {
-			System.out.println("登録成功！");
-		}
-		else {
-			System.out.println("登録失敗！");
-		}
+		//在庫品の更新処理
+		if (request.getParameter("submit").equals("更新")) {
 
+			if(itemDao.update(new Items(0,item_name, 0, task_details_id , 0))) {
+				System.out.println("更新成功！");
+			}
+			else {
+				System.out.println("更新失敗！");
+			}
+		}
+				else {
+					if(itemDao.delete(ID)) {
+						System.out.println("削除成功！");
+					}
+					else {
+						System.out.println("削除失敗！");
+					}
+				}
 
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/house_login.jsp");
-		dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/house_login.jsp");
+			dispatcher.forward(request, response);
+			}
 	}
 
-}
+

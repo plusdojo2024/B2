@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Items;
+import dao.ItemDAO;
 
 /**
  * Servlet implementation class ItemListServlet
@@ -30,19 +32,19 @@ public class ItemListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/task_list.jsp");
 		dispatcher.forward(request, response);
-	}
 
+	//セッションスコープに格納されているhouses_idを取得する
+		Houses house_data = (Houses)session.getAttribute("house_hash");
+		int houses_id = house_data.getHouse_hash();
 
 	//表示処理を行う
-		ItemDAO = new ItemDAO();
-		if (ItemDao.insert(new ItemDAO(item_name,status))) {	// 表示成功
-			request.setAttribute("result",
-			new Result("表示成功！", "/B2/ItemListServlet"));
+		ItemDAO itemDAO= new ItemDAO();
+		if (itemDAO.selectAll(new Items(0,null,0,0,houses_id))) {	// 表示成功
+			System.out.println("表示成功");
 		}
 		else {												// 表示失敗
-			request.setAttribute("result",
-			new Result("表示失敗！", , "/B2/ItemListServlet"));
+			System.out.println("表示失敗");
 		}
 	}
-
+}
 }

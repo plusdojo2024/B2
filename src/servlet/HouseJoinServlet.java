@@ -51,7 +51,7 @@ public class HouseJoinServlet extends HttpServlet {
 		if(houseDao.isLoginOK(new Houses(0, house_hash, password, ""))) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session =request.getSession();
-			session.setAttribute("house_hash", new LoginHouse(house_hash));		// 修正必要（6/17）
+			session.setAttribute("Houses", new LoginHouse(house_hash));		// 修正必要（6/17）
 
 			// indexサーブレットにリダイレクトする
 			response.sendRedirect("/B2/IndexServlet");

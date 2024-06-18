@@ -14,11 +14,24 @@
 		<div>
 			<a>
 			<h1>FORESE</h1>
-			<img>
+			<img>人みたいなイラスト？
 			</a>
-
 		</div>
-
+		<div>
+			<a>
+			<img>通知イラスト
+			</a>
+		</div>
+		<div>
+			<a>
+			<img>やることリストイラスト
+			</a>
+		</div>
+		<div>
+			<a>
+			<img>ハンバーガーボタン
+			</a>
+		</div>
 	</header>
 </body>
 </html>

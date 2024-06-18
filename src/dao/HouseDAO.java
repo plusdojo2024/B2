@@ -10,6 +10,7 @@ import java.util.List;
 
 import model.Houses;
 //Houses型のHouse
+import model.Users;
 
 public class HouseDAO {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す ☆この検索はいる？？
@@ -87,7 +88,7 @@ public class HouseDAO {
 		return houseList;
 	}
 
-	// 引数Houses houseで指定されたレコードを登録し、成功したらtrueを返す
+	// 家登録ができたらtrueを返す
 	public boolean insert(Houses house) {
 		Connection conn = null;
 		boolean result = false;
@@ -201,5 +202,66 @@ public class HouseDAO {
 
 		// 結果を返す
 		return loginResult;
+	}
+
+
+	//house_hash（？）を返す house_hashではなくhouse_data??
+	public Houses select (Houses house) {
+		Connection conn = null;
+		Houses house_hash;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
+
+			//SQL文を準備する
+			String sql = "SELECT * FROM HOUSES WHERE house_hash = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//SQL文を完成させる
+			if (house.getHouse_hash() != null) {
+				pStmt.setString(1, house.getHouse_hash());
+			}
+			else {
+				pStmt.setString(1, "（未設定）");
+			}
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			house_hash = new Houses(
+					rs.getInt("ID"),
+					rs.getString("house_hash"),
+					rs.getString("password"),
+					rs.getString("house_name")
+					);
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			house_hash = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			house_hash = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					house_hash = null;
+				}
+			}
+		}
+		// 結果を返す
+		return house_hash;
 	}
 }

@@ -124,6 +124,7 @@ public class UserDAO {
 	//emailを返す
 	public Users select(Users user) {
 		Connection conn = null;
+		Users user_data;
 
 		try {
 			// JDBCドライバを読み込む
@@ -133,34 +134,37 @@ public class UserDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
 			//SQL文を準備する
-			String sql = "SELECT * FROM USERS WHERE email LIKE ?";
+			String sql = "SELECT * FROM USERS WHERE email = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
 			if (user.getEmail() != null) {
-				pStmt.setString(1, "%" + user.getEmail() + "%");
+				pStmt.setString(1, user.getEmail());
 			}
 			else {
-				pStmt.setString(1, "%");
+				pStmt.setString(1, "（未設定）");
 			}
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
 			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Users record = new Users(
-				rs.getString("email")
-				);
-			}
+			user_data = new Users(
+					rs.getInt("ID"),
+					rs.getString("user_name"),
+					rs.getString("email"),
+					rs.getString("password"),
+					rs.getInt("house_id")
+					);
+
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			cardList = null;
+			user_data = null;
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			cardList = null;
+			user_data = null;
 		}
 		finally {
 			// データベースを切断
@@ -170,12 +174,12 @@ public class UserDAO {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					cardList = null;
+					user_data = null;
 				}
 			}
 		}
 		// 結果を返す
-		return cardList;
+		return user_data;
 	}
 
 }

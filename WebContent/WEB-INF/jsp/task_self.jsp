@@ -32,8 +32,16 @@
 			<th>土</th>
 			<th>日</th>
 		</tr>
+
 		<tr>
-			<td>名前</td>
+			<td><button type="button">⊕</button></td>
+			<td><button type="button">⊕</button></td>
+			<td><button type="button">⊕</button></td>
+			<td><button type="button">⊕</button></td>
+			<td><button type="button">⊕</button></td>
+			<td><button type="button">⊕</button></td>
+			<td><button type="button">⊕</button></td>
+			<td><button type="button">⊕</button></td>
 		</tr>
 	</table>
 	</div>

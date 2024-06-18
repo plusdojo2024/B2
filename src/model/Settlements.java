@@ -10,13 +10,14 @@ public class Settlements implements Serializable{
 	private boolean settlement_finish; //精算済みフラグ
 	private boolean settlement_approval; //承認済みフラグ
 	private int settlement_date; //精算日
+	private int houses_id; // 家ID
 
 	public Settlements() {
 
 	}
 
 	public Settlements(int ID, int users_id, int expenses_id, boolean settlement_finish, boolean settlement_approval,
-			int settlement_date) {
+			int settlement_date, int houses_id) {
 		super();
 		this.ID = ID;
 		this.users_id = users_id;
@@ -24,6 +25,7 @@ public class Settlements implements Serializable{
 		this.settlement_finish = settlement_finish;
 		this.settlement_approval = settlement_approval;
 		this.settlement_date = settlement_date;
+		this.houses_id = houses_id;
 	}
 
 	public int getID() {
@@ -72,6 +74,14 @@ public class Settlements implements Serializable{
 
 	public void setSettlement_date(int settlement_date) {
 		this.settlement_date = settlement_date;
+	}
+
+	public int getHouse_id() {
+		return houses_id;
+	}
+
+	public void setHouses_id(int houses_id) {
+		this.houses_id = houses_id;
 	}
 
 

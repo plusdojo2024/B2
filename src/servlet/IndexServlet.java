@@ -32,12 +32,15 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
 		dispatcher.forward(request, response);
+
+		// リクエストパラメーターを取得
+		request.setCharacterEncoding("UTF-8");
 		int house_id = Integer.parseInt(request.getParameter("house_id"));
 
-		// index.jspのリストに参加者を表示
+		// UserDAOのlistメソッドつかう
 		UserDAO userDao = new UserDAO();
 		if (userDao.list(house_id)) {
-
+			request.setAttribute("userList", userList);
 		}
 
 	}

@@ -5,13 +5,16 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Houses;
 //Houses型のHouse
+import model.Users;
 
 public class HouseDAO {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す ☆この検索はいる？？
-	/* public List<Houses> select(Houses house) {
+	public List<Houses> select(Houses house) {
 		Connection conn = null;
 		List<Houses> houseList = new ArrayList<Houses>();
 
@@ -83,10 +86,10 @@ public class HouseDAO {
 
 		// 結果を返す
 		return houseList;
-	}*/
+	}
 
 	// 家登録ができたらtrueを返す
-	public boolean houseInsert(String house_hash,String password,String house_name) {
+	public boolean insert(Houses house) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -101,9 +104,26 @@ public class HouseDAO {
 			String sql = "INSERT INTO HOUSES VALUES (NULL, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-				pStmt.setString(1,house_hash);
-				pStmt.setString(2, password);
-				pStmt.setString(3, house_name);
+			// SQL文を完成させる
+			if (house.getHouse_hash() != null && !house.getHouse_hash().equals("")) {
+				pStmt.setString(1, house.getHouse_hash());
+			}
+			else {
+				pStmt.setString(1, "（未設定）");
+			}
+			if (house.getPassword() != null && !house.getPassword().equals("")) {
+				pStmt.setString(2, house.getPassword());
+			}
+			else {
+				pStmt.setString(2, "（未設定）");
+			}
+			if (house.getHouse_name() != null && !house.getHouse_name().equals("")) {
+				pStmt.setString(3, house.getHouse_name());
+			}
+			else {
+				pStmt.setString(3, "（未設定）");
+			}
+
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -185,10 +205,10 @@ public class HouseDAO {
 	}
 
 
-	//house_hushからHousesのインスタンスを持ってくる
-	public Houses select(Houses house) {
+	//house_hash（？）を返す house_hashではなくhouse_data??
+	public Houses select (Houses house) {
 		Connection conn = null;
-		Houses house_data;
+		Houses house_hash;
 
 		try {
 			// JDBCドライバを読み込む
@@ -213,7 +233,7 @@ public class HouseDAO {
 			ResultSet rs = pStmt.executeQuery();
 
 			// 結果表をコレクションにコピーする
-			house_data = new Houses(
+			house_hash = new Houses(
 					rs.getInt("ID"),
 					rs.getString("house_hash"),
 					rs.getString("password"),
@@ -223,11 +243,11 @@ public class HouseDAO {
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			house_data = null;
+			house_hash = null;
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			house_data = null;
+			house_hash = null;
 		}
 		finally {
 			// データベースを切断
@@ -237,11 +257,11 @@ public class HouseDAO {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					house_data = null;
+					house_hash = null;
 				}
 			}
 		}
 		// 結果を返す
-		return house_data;
+		return house_hash;
 	}
 }

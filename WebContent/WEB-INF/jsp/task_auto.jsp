@@ -47,6 +47,7 @@
 		</tr>
 	</table>
 	</div>
+<<<<<<< HEAD
 	<div> <!-- 横並び -->
 		<input type="submit" value="自動">
 		<input type="submit" value="再振り分け">
@@ -57,6 +58,11 @@
 		<input type="submit" value="決定">
 		<a href ="/B2/TaskAutoServlet"></a>
 	</div>
+=======
+	<button type="button">自動</button><button type="button">再振り分け</button><br>
+	<input type="submit" value="決定">
+
+>>>>>>> c03e3d34b0654ef37b39f3fc582b0c2efd5e517a
   </main>
 </body>
 </html>

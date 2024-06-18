@@ -9,13 +9,14 @@ public class Tasks implements Serializable{
 	private int assigned_date;
 	private boolean task_finish;
 	private boolean item_finish;
+	private int houses_id;
 
 	public Tasks(){
 
 	}
 
 	public Tasks(int ID, int task_details_id, int users_id, int assigned_date, boolean task_finish,
-			boolean item_finish) {
+			boolean item_finish, int houses_id) {
 		super();
 		this.ID = ID;
 		this.task_details_id = task_details_id;
@@ -23,6 +24,7 @@ public class Tasks implements Serializable{
 		this.assigned_date = assigned_date;
 		this.task_finish = task_finish;
 		this.item_finish = item_finish;
+		this.houses_id = houses_id;
 	}
 
 	public int getID() {
@@ -71,6 +73,14 @@ public class Tasks implements Serializable{
 
 	public void setItem_finish(boolean item_finish) {
 		this.item_finish = item_finish;
+	}
+
+	public int getHouses_id() {
+		return houses_id;
+	}
+
+	public void setHouses_id(int houses_id) {
+		this.houses_id = houses_id;
 	}
 
 

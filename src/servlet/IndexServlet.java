@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UserDAO;
+
 /**
  * Servlet implementation class IndexServlet
  */
@@ -30,6 +32,14 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
 		dispatcher.forward(request, response);
+		int house_id = Integer.parseInt(request.getParameter("house_id"));
+
+		// index.jspのリストに参加者を表示
+		UserDAO userDao = new UserDAO();
+		if (userDao.list(house_id)) {
+
+		}
+
 	}
 
 	/**

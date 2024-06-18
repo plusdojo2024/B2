@@ -43,15 +43,20 @@ public class HouseJoinServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメーターを取得
 		request.setCharacterEncoding("UTF-8");
-		String house_hush = request.getParameter("house_hash");
+		String house_hash = request.getParameter("house_hash");
 		String password = request.getParameter("password");
 
 		// ログイン処理を行う（参加）
 		HouseDAO houseDao = new HouseDAO();
-		if(houseDao.isLoginOK(new Houses(0, house_hash, password, ""))) {	// ログイン成功
+		if(houseDao.isLoginOK(new Houses(0, null,house_hash, password))) {	// ログイン成功
+
+			Houses house_data = new Houses(0,null,house_hash,password);
+			Houses houseResult = houseDao.select(house_data);
+
+
 			// セッションスコープにIDを格納する
 			HttpSession session =request.getSession();
-			session.setAttribute("house_hash", new LoginHouse(house_hash));		// 修正必要（6/17）
+			session.setAttribute("house_data",house_data);		// 修正必要（6/17）
 
 			// indexサーブレットにリダイレクトする
 			response.sendRedirect("/B2/IndexServlet");

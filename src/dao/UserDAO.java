@@ -121,7 +121,7 @@ public class UserDAO {
 		return loginResult;
 	}
 
-	//emailを返す
+	//emailからデータ持ってくる
 	public Users select(Users user) {
 		Connection conn = null;
 		Users user_data;

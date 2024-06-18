@@ -5,16 +5,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import model.Houses;
 //Houses型のHouse
-import model.Users;
 
 public class HouseDAO {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す ☆この検索はいる？？
-	public List<Houses> select(Houses house) {
+	/* public List<Houses> select(Houses house) {
 		Connection conn = null;
 		List<Houses> houseList = new ArrayList<Houses>();
 
@@ -86,7 +83,7 @@ public class HouseDAO {
 
 		// 結果を返す
 		return houseList;
-	}
+	}*/
 
 	// 家登録ができたらtrueを返す
 	public boolean houseInsert(String house_hash,String password,String house_name) {
@@ -188,10 +185,10 @@ public class HouseDAO {
 	}
 
 
-	//house_hash（？）を返す house_hashではなくhouse_data??
-	public Houses select (Houses house) {
+	//house_hushからHousesのインスタンスを持ってくる
+	public Houses select(Houses house) {
 		Connection conn = null;
-		Houses house_hash;
+		Houses house_data;
 
 		try {
 			// JDBCドライバを読み込む
@@ -216,7 +213,7 @@ public class HouseDAO {
 			ResultSet rs = pStmt.executeQuery();
 
 			// 結果表をコレクションにコピーする
-			house_hash = new Houses(
+			house_data = new Houses(
 					rs.getInt("ID"),
 					rs.getString("house_hash"),
 					rs.getString("password"),
@@ -226,11 +223,11 @@ public class HouseDAO {
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			house_hash = null;
+			house_data = null;
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			house_hash = null;
+			house_data = null;
 		}
 		finally {
 			// データベースを切断
@@ -240,11 +237,11 @@ public class HouseDAO {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					house_hash = null;
+					house_data = null;
 				}
 			}
 		}
 		// 結果を返す
-		return house_hash;
+		return house_data;
 	}
 }

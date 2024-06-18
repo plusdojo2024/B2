@@ -10,16 +10,25 @@
 
   <main>
 	<div>
-	<h2>分担一覧</h2><h2>登録</h2><h2>振り分け</h2><!-- 横並び -->
+	<!-- 横並び -->
+	<h2>分担一覧</h2>
+	<a href ="/B2/TaskServlet"></a>
+	<h2>登録</h2>
+	<a href ="/B2/TaskRegistServlet"></a>
+	<h2>振り分け</h2>
+	<a href ="/B2/TaskAutoServlet"></a>
 	</div>
 	<div>
-		<input type="radio"  name="contact" value="email" />
-		<label for="contactChoice1">自動</label>
+		<!-- この辺大丈夫そう？ -->
+		<!-- 全部ボタンの後ろにtaskautoservletのリンク貼ってある -->
+		<input type="radio"  name="assign" value="autoAssignMode" />
+		<label for="assignChoice1">自動</label>
+		<a href ="/B2/TaskAutoServlet"></a>
 
-		<input type="radio" name="contact" value="phone" />
-		<label for="contactChoice2">手動</label>
+		<input type="radio" name="assign" value="selfAssignMode" />
+		<label for="assignChoice2">手動</label>
+		<a href ="/B2/TaskSelfServlet"></a>
 	</div>
-
 	<div>
 	<table>
 		<tr>
@@ -33,14 +42,21 @@
 			<th>日</th>
 		</tr>
 		<tr>
-			<td>名前</td>
+			<td>掃除</td>
+			<td>谷口</td>
 		</tr>
 	</table>
 	</div>
-	<button type="button">自動</button><button type="button">再振り分け</button><br>
-	<input type="submit" value="決定">
-
+	<div> <!-- 横並び -->
+		<input type="submit" value="自動">
+		<input type="submit" value="再振り分け">
+		<a href ="/B2/TaskAutoServlet"></a>
+	</div>
+	<div>
+		<!-- 決定ボタン -->
+		<input type="submit" value="決定">
+		<a href ="/B2/TaskAutoServlet"></a>
+	</div>
   </main>
 </body>
-
 </html>

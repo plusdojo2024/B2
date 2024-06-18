@@ -38,7 +38,6 @@
 				<table>			<!-- ここ修正するかも（table必要なのか？） -->
 					<tr>
 						<td><input type="submit" value="精算"></td>
-						<td><input type="submit" value="削除"></td>
 					</tr>
 				</table>
 				<input type="submit" value="まとめて精算">

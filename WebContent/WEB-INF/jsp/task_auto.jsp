@@ -37,6 +37,7 @@
 		</tr>
 	</table>
 	</div>
+	<button type="button">自動</button><button type="button">再振り分け</button><br>
 	<input type="submit" value="決定">
 
   </main>

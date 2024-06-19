@@ -52,7 +52,7 @@ public class TaskRegistServlet extends HttpServlet {
 		// 登録処理を行う
 		TaskDAO taskDao = new TaskDAO();
 
-		if (taskDao.insert(new Task_Details(0,task_name, "", effort, frequency,0))) {
+		if (taskDao.insert(new Task_Details(0,task_name, description, effort, frequency,0))) {
 			System.out.println("登録成功!");
 		}
 		else {

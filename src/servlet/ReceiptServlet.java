@@ -46,22 +46,27 @@ public class ReceiptServlet extends HttpServlet {
 	String description = request.getParameter("description");
 	int expense_date = Integer.parseInt(request.getParameter("expense_date"));
 
-	// セッションスコープでhouses_idをとってくる
-	Houses house_data = (Houses)session.getAttribute("Houses");
-	int houses_id = house_data.getHouse_hash();
-	// セッションスコープでusers_idをとってくる
-	Users user_data = (Users)session.getAttribute("Users");
-	int users_id = user_data.getUsers_id();
 
 	//レシート登録処理
 		ExpenseDAO eDao = new ExpenseDAO();
 
-		if (eDao.insert(new Expenses(0, receipt_name, receipt_amount, description, expense_date, house_id))) {
+		if (eDao.insert(new Expenses(0, receipt_name, receipt_amount, description, expense_date))) {
 			System.out.println("登録成功！");
 		}
 		else {
 			System.out.println("登録失敗！");
 		}
+
+
+		// セッションスコープでhouses_idをとってくる
+		Houses house_data = (Houses)session.getAttribute("Houses");
+		int houses_id = house_data.getHouse_hash();
+		// セッションスコープでusers_idをとってくる
+		Users user_data = (Users)session.getAttribute("Users");
+		int users_id = user_data.getUsers_id();
+
+
+
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/settlement.jsp");

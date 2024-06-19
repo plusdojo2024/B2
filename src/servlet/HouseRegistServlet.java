@@ -1,6 +1,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
+import java.util.Base64;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.HouseDAO;
-import model.Houses;
 
 /**
  * Servlet implementation class HouseRegistServlet
@@ -40,19 +43,33 @@ public class HouseRegistServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
 
 		request.setCharacterEncoding("UTF-8");
 		// 改造（ここから）
 		String house_name = request.getParameter("house_name");
 		String password = request.getParameter("password");
-		String house_hash= "";
-		// 改造（ここまで）
+		LocalDateTime currentDateTime = LocalDateTime.now();
+
+
+		// SHA-256でハッシュ化(house_nameとcurrentDateTimeを連結文字列にした)
+		String hashData = house_name+currentDateTime;
+		MessageDigest sha256;
+		String hash = null;
+		try {
+			sha256 = MessageDigest.getInstance("SHA-256");
+			byte[] sha256_result = sha256.digest(hashData.getBytes());
+			hash = Base64.getEncoder().encodeToString(sha256_result);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		HouseDAO hDao = new HouseDAO();
+
+		System.out.println(hash);
 
 		// 登録処理を行う
-		HouseDAO houseDao = new HouseDAO();
 
-		if (houseDao.insert(new Houses(0,house_name, password,""))) {
+		if (hDao.houseInsert(hash,password,house_name)) {
 			System.out.println("登録成功!");
 		}
 		else {

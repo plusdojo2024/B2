@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +12,41 @@
 
 <body>
 	<main>
+		<%= request.getAttribute("calender") %>
 		<div>
-			<h1>カレンダー</h1>
+		<form action="/B2/SchaduleServlet" method="get">
+		<select>
+		<% int year = Integer.parseInt(request.getAttribute("year").toString());
+   			 int month = Integer.parseInt(request.getAttribute("month").toString());
+    			for(int i = year-10; i <= year+10; i++){ %>
+		<option value="<%=i %>"
+		<% if(i == year){ %>
+			selected
+		<% } %>
+		><%=i %>年</option>
+		<% } %>
+		</select>
+
+		<select>
+		<% for(int i = 1; i <= 12; i++){ %>
+		<option value="<%=i %>"
+		<% if(i == month){ %>
+		selected
+		<% } %>
+		><%=i %>月</option>
+		<% } %>
+		</select>
+			<br/>
+			<br/>
+			<input type="submit" id="ok" name="ok" value="送信"/>
+		</form>
+		</div>
+	</main>
+</body>
+</html>
+
+		<!--<div>
+			  <h1>カレンダー</h1>
 			<form method="post" action="/B2/SchaduleServlet">
 				<table>
 					<tr>
@@ -24,7 +60,4 @@
 					</tr>
 				</table>
 			</form>
-		</div>
-	</main>
-</body>
-</html>
+		</div>-->

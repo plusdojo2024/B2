@@ -89,7 +89,7 @@ public class HouseDAO {
 	}*/
 
 	// 家登録ができたらtrueを返す
-	public boolean insert(Houses house) {
+	public boolean houseInsert(String house_hash,String password,String house_name) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -105,24 +105,9 @@ public class HouseDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (house.getHouse_hash() != null && !house.getHouse_hash().equals("")) {
-				pStmt.setString(1, house.getHouse_hash());
-			}
-			else {
-				pStmt.setString(1, "（未設定）");
-			}
-			if (house.getPassword() != null && !house.getPassword().equals("")) {
-				pStmt.setString(2, house.getPassword());
-			}
-			else {
-				pStmt.setString(2, "（未設定）");
-			}
-			if (house.getHouse_name() != null && !house.getHouse_name().equals("")) {
-				pStmt.setString(3, house.getHouse_name());
-			}
-			else {
-				pStmt.setString(3, "（未設定）");
-			}
+			pStmt.setString(1,house_hash);
+			pStmt.setString(2, password);
+			pStmt.setString(3, house_name);
 
 
 			// SQL文を実行する

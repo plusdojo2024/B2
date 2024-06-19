@@ -48,9 +48,22 @@ public class HouseRegistServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String house_hash= "";
 		// 改造（ここまで）
+		// SHA-256でハッシュ化(house_nameとcurrentDateTimeを連結文字列にした)
+		String hashData = house_name+currentDateTime;
+		String hash;
+		MessageDigest sha256;
+		try {
+			sha256 = MessageDigest.getInstance("SHA-256");
+			byte[] sha256_result = sha256.digest(hashData.getBytes());
+			hash = Base64.getEncoder().encodeToString(sha256_result);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
 
 		// 登録処理を行う
-		HouseDAO houseDao = new HouseDAO();
+		HouseDAO hDao = new HouseDAO();
+
+		;
 
 		if (houseDao.insert(new Houses(0,house_name, password,""))) {
 			System.out.println("登録成功!");

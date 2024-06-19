@@ -47,10 +47,10 @@ public class BoardDAO {
 				pStmt.setString(3, "（未設定）");
 			}
 			if (board.getPost_date() != null && !board.getPost_date().equals("")) {
-				pStmt.setString(3, board.getPost_date());
+				pStmt.setString(4, board.getPost_date());
 			}
 			else {
-				pStmt.setString(3, "（未設定）");
+				pStmt.setString(4, "（未設定）");
 			}
 
 			// SQL文を実行する
@@ -130,8 +130,8 @@ public class BoardDAO {
 		return loginResult;
 	}
 
-	//なんの処理かはわからないけどセレクト
-	public Boards select(Boards board) {
+	//全件返すセレクトのやつ
+	public Boards selectAll(int houses_id) {
 		Connection conn = null;
 		Boards board_data;
 
@@ -143,16 +143,11 @@ public class BoardDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
 			//SQL文を準備する
-			String sql = "SELECT * FROM BOARDS WHERE users_id = ?";
+			String sql = "SELECT * FROM BOARDS WHERE houses_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
-			if (board.getEmail() != null) {
-				pStmt.setString(1, board.getUsers_id());
-			}
-			else {
-				pStmt.setString(1, "（未設定）");
-			}
+				pStmt.setString(1, board.getHouses_id());
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -161,7 +156,7 @@ public class BoardDAO {
 			board_data = new Boards(
 					rs.getInt("ID"),
 					rs.getString("users_name"),
-					rs.getString("tattle"),
+					rs.getString("tittle"),
 					rs.getString("message"),
 					rs.getInt("post_date")
 					);

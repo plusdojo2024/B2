@@ -78,7 +78,7 @@ public class ScheduleServlet extends HttpServlet {
     		if(num < startday || num > lastday + startday - 1){
     			sb.append("<td></td>");
     		}else{
-    			sb.append("<td>"+date+"</td>");
+    			sb.append("<td name="+ num +">"+date+"</td>");
     			date++;
     		}
     		if(num % 7 == 0){
@@ -100,9 +100,7 @@ public class ScheduleServlet extends HttpServlet {
     	return;
     }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+	}
 }

@@ -39,6 +39,13 @@ public class ItemDAO {
 				pStmt.setString(1, "（未設定）");
 			}
 
+			if (item.getTask_details_id() != null && !item.getTask_details_id().equals("")) {
+				pStmt.setInt(1, item.getTask_details_id());
+			}
+			else {
+				pStmt.setInt(1, "（未設定）");
+			}
+
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
@@ -299,4 +306,64 @@ public class ItemDAO {
 					// 結果を返す
 					return itemList;
 				}
+				// ハウスIDで消耗品在庫リストを返す
+				public List<Items> tasklist(int task_details_id) {
+					Connection conn = null;
+					List<Items> taskList = new ArrayList<Items>();
+
+					try {
+						// JDBCドライバを読み込む
+						Class.forName("org.h2.Driver");
+
+						// データベースに接続する
+						conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
+
+						// SQL文を準備する
+						// 家事名で絞るけど、絞り方わからない
+						String sql = "SELECT * FROM Items WHERE house_id = ? ";
+						PreparedStatement pStmt = conn.prepareStatement(sql);
+						// SQL文を完成させる
+
+						pStmt.setInt(1, house_id);
+
+						// SQL文を実行し、結果表を取得する
+						ResultSet rs = pStmt.executeQuery();
+
+						// 結果表をコレクションにコピーする
+						while (rs.next()) {
+							Items record = new Items(
+							rs.getInt("ID"),
+							rs.getString("item_name"),
+							rs.getInt("status"),
+							rs.getInt("task_details_id"),
+							rs.getInt("house_id")
+							);
+							itemList.add(record);
+						}
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+						itemList = null;
+					}
+					catch (ClassNotFoundException e) {
+						e.printStackTrace();
+						itemList = null;
+					}
+					finally {
+						// データベースを切断
+						if (conn != null) {
+							try {
+								conn.close();
+							}
+							catch (SQLException e) {
+								e.printStackTrace();
+								itemList = null;
+							}
+						}
+					}
+
+					// 結果を返す
+					return itemList;
+				}
+
 }

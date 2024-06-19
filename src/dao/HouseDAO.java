@@ -5,8 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Houses;
+//Houses型のHouse
+import model.Users;
 
 public class HouseDAO {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す ☆この検索はいる？？

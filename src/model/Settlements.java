@@ -6,22 +6,29 @@ import java.io.Serializable;
 public class Settlements implements Serializable{
 	private int ID; //ID
 	private int users_id; //ユーザーID
-	private int expenses_id; //支出詳細ID
+	private String receipt_name; //支出の種類
+	private int receipt_amount; //金額
+	private String description; //詳細
+	private String expense_date; //支払日
 	private boolean settlement_finish; //精算済みフラグ
 	private boolean settlement_approval; //承認済みフラグ
-	private int settlement_date; //精算日
+	private String settlement_date; //精算日
 	private int houses_id; // 家ID
 
 	public Settlements() {
 
 	}
 
-	public Settlements(int ID, int users_id, int expenses_id, boolean settlement_finish, boolean settlement_approval,
-			int settlement_date, int houses_id) {
+	public Settlements(int ID, int users_id, String receipt_name, int receipt_amount, String description,
+			String expense_date, boolean settlement_finish, boolean settlement_approval, String settlement_date,
+			int houses_id) {
 		super();
 		this.ID = ID;
 		this.users_id = users_id;
-		this.expenses_id = expenses_id;
+		this.receipt_name = receipt_name;
+		this.receipt_amount = receipt_amount;
+		this.description = description;
+		this.expense_date = expense_date;
 		this.settlement_finish = settlement_finish;
 		this.settlement_approval = settlement_approval;
 		this.settlement_date = settlement_date;
@@ -44,12 +51,36 @@ public class Settlements implements Serializable{
 		this.users_id = users_id;
 	}
 
-	public int getExpenses_id() {
-		return expenses_id;
+	public String getReceipt_name() {
+		return receipt_name;
 	}
 
-	public void setExpenses_id(int expenses_id) {
-		this.expenses_id = expenses_id;
+	public void setReceipt_name(String receipt_name) {
+		this.receipt_name = receipt_name;
+	}
+
+	public int getReceipt_amount() {
+		return receipt_amount;
+	}
+
+	public void setReceipt_amount(int receipt_amount) {
+		this.receipt_amount = receipt_amount;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getExpense_date() {
+		return expense_date;
+	}
+
+	public void setExpense_date(String expense_date) {
+		this.expense_date = expense_date;
 	}
 
 	public boolean isSettlement_finish() {
@@ -68,21 +99,25 @@ public class Settlements implements Serializable{
 		this.settlement_approval = settlement_approval;
 	}
 
-	public int getSettlement_date() {
+	public String getSettlement_date() {
 		return settlement_date;
 	}
 
-	public void setSettlement_date(int settlement_date) {
+	public void setSettlement_date(String settlement_date) {
 		this.settlement_date = settlement_date;
 	}
 
-	public int getHouse_id() {
+	public int getHouses_id() {
 		return houses_id;
 	}
 
 	public void setHouses_id(int houses_id) {
 		this.houses_id = houses_id;
 	}
+
+
+
+
 
 
 

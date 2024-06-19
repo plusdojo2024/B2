@@ -14,7 +14,7 @@ import model.Users;
 
 public class HouseDAO {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す ☆この検索はいる？？
-	public List<Houses> select(Houses house) {
+	/* public List<Houses> select(Houses house) {
 		Connection conn = null;
 		List<Houses> houseList = new ArrayList<Houses>();
 
@@ -86,7 +86,7 @@ public class HouseDAO {
 
 		// 結果を返す
 		return houseList;
-	}
+	}*/
 
 	// 家登録ができたらtrueを返す
 	public boolean insert(Houses house) {

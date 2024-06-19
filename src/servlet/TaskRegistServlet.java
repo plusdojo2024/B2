@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.TaskDAO;
-import model.Tasks;
+import model.Task_Details;
 
 /**
  * Servlet implementation class TaskRegistServlet
@@ -31,7 +31,7 @@ public class TaskRegistServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/house_login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/task.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -45,23 +45,23 @@ public class TaskRegistServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		//フォームデータを取得
 		String task_name = request.getParameter("task_name");
+		String description = request.getParameter("description");
 		int frequency = Integer.parseInt(request.getParameter("frequency"));
 		int effort = Integer.parseInt(request.getParameter("effort"));
 
 		// 登録処理を行う
 		TaskDAO taskDao = new TaskDAO();
 
-		if (taskDao.insert(new Tasks(0,task_name, "", effort, frequency,0))) {
+		if (taskDao.insert(new Task_Details(0,task_name, "", effort, frequency,0))) {
 			System.out.println("登録成功!");
 		}
 		else {
 			System.out.println("登録失敗!");
 		}
 
-		request.setAttribute("task_name", task_name);
-
-		   RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/TaskRegistServlet.jsp");
-			dispatcher.forward(request, response);
+		//結果をフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/task_regist.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

@@ -7,19 +7,21 @@ public class Boards implements Serializable {
 	private String user_name; //ユーザー名
 	private String title; //タイトル
 	private String message; //内容
-	private int post_date; //投稿日
+	private String post_date; //投稿日
+	private int houses_id; //ハウスID
 
 	public Boards() {
 
 	}
 
-	public Boards(int ID, String user_name, String title, String message, int post_date) {
+	public Boards(int ID, String user_name, String title, String message, String post_date, int houses_id) {
 		super();
 		this.ID = ID;
 		this.user_name = user_name;
 		this.title = title;
 		this.message = message;
 		this.post_date = post_date;
+		this.houses_id = houses_id;
 	}
 
 	public int getID() {
@@ -54,12 +56,20 @@ public class Boards implements Serializable {
 		this.message = message;
 	}
 
-	public int getPost_date() {
+	public String getPost_date() {
 		return post_date;
 	}
 
-	public void setPost_date(int post_date) {
+	public void setPost_date(String post_date) {
 		this.post_date = post_date;
+	}
+
+	public int getHouses_id() {
+		return houses_id;
+	}
+
+	public void setHouses_id(int houses_id) {
+		this.houses_id = houses_id;
 	}
 
 }

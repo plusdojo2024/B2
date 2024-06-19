@@ -7,19 +7,21 @@ public class Schedules implements Serializable {
 	private int users_id; //ユーザーID
 	private String title; //タイトル
 	private String text; //詳細
-	private int date; //日時
+	private String date; //日時
+	private int houses_id;
 
 	public Schedules() {
 
 	}
 
-	public Schedules(int ID, int users_id, String title, String text, int date) {
+	public Schedules(int ID, int users_id, String title, String text, String date, int houses_id) {
 		super();
 		this.ID = ID;
 		this.users_id = users_id;
 		this.title = title;
 		this.text = text;
 		this.date = date;
+		this.houses_id = houses_id;
 	}
 
 	public int getID() {
@@ -54,13 +56,22 @@ public class Schedules implements Serializable {
 		this.text = text;
 	}
 
-	public int getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(int date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
+
+	public int getHouses_id() {
+		return houses_id;
+	}
+
+	public void setHouses_id(int houses_id) {
+		this.houses_id = houses_id;
+	}
+
 
 
 

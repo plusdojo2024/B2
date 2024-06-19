@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Users;
+import model.Boards;
 
-public class UserDAO {
-	// ユーザー登録
-	public boolean insert(Users user) {
+public class BoardDAO {
+	// 書き込み情報登録
+	public boolean insert(Boards board) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -24,24 +24,30 @@ public class UserDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2","sa", "");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO USERS VALUES (NULL, ?, ?, ?, NULL)";
+			String sql = "INSERT INTO BOARDS VALUES (NULL, ?, ?, ?, NULL)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (user.getUser_name() != null && !user.getUser_name().equals("")) {
-				pStmt.setString(1, user.getUser_name());
+			if (board.getUsers_id() != null && !board.getUsers_id().equals("")) {
+				pStmt.setString(1, board.getUsers_id());
 			}
 			else {
 				pStmt.setString(1, "（未設定）");
 			}
-			if (user.getEmail() != null && !user.getEmail().equals("")) {
-				pStmt.setString(2, user.getEmail());
+			if (board.getTittle() != null && !board.getTittle().equals("")) {
+				pStmt.setString(2, board.getTittle());
 			}
 			else {
 				pStmt.setString(2, "（未設定）");
 			}
-			if (user.getPassword() != null && !user.getPassword().equals("")) {
-				pStmt.setString(3, user.getPassword());
+			if (board.getMessage() != null && !board.getMessage().equals("")) {
+				pStmt.setString(3, board.getMessage());
+			}
+			else {
+				pStmt.setString(3, "（未設定）");
+			}
+			if (board.getPost_date() != null && !board.getPost_date().equals("")) {
+				pStmt.setString(3, board.getPost_date());
 			}
 			else {
 				pStmt.setString(3, "（未設定）");
@@ -72,8 +78,8 @@ public class UserDAO {
 	// 結果を返す
 	return result;
 }
-	// ログインできるならtrueを返す
-	public boolean isLoginOK(Users user) {
+	// 書き込めたらtrueを返す
+	public boolean isLoginOK(Boards board) {
 		Connection conn = null;
 		boolean loginResult = false;
 
@@ -85,15 +91,16 @@ public class UserDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
 			//SELECT文を準備する
-			String sql = "SELECT COUNT(*) FROM USERS WHERE email = ? AND password = ?";
+			String sql = "SELECT COUNT(*) FROM BOARDS WHERE users_id = ? AND tittle = ? AND message = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, user.getEmail());
-			pStmt.setString(2,user.getPassword());
+			pStmt.setString(1, board.getUsers_id());
+			pStmt.setString(2,board.getTittle());
+			pStmt.setString(3,board.getMessage());
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
-			//メールアドレスとパスワードが一致するユーザーがいたかどうかをチェックする
+			//ユーザーの書き込みが完了しているかをチェックする？
 			rs.next();
 			if (rs.getInt("COUNT(*)") == 1) {
 				loginResult = true;
@@ -123,10 +130,10 @@ public class UserDAO {
 		return loginResult;
 	}
 
-	//emailからデータ持ってくる
-	public Users select(Users user) {
+	//なんの処理かはわからないけどセレクト
+	public Boards select(Boards board) {
 		Connection conn = null;
-		Users user_data;
+		Boards board_data;
 
 		try {
 			// JDBCドライバを読み込む
@@ -136,12 +143,12 @@ public class UserDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
 			//SQL文を準備する
-			String sql = "SELECT * FROM USERS WHERE email = ?";
+			String sql = "SELECT * FROM BOARDS WHERE users_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
-			if (user.getEmail() != null) {
-				pStmt.setString(1, user.getEmail());
+			if (board.getEmail() != null) {
+				pStmt.setString(1, board.getUsers_id());
 			}
 			else {
 				pStmt.setString(1, "（未設定）");
@@ -151,22 +158,22 @@ public class UserDAO {
 			ResultSet rs = pStmt.executeQuery();
 
 			// 結果表をコレクションにコピーする
-			user_data = new Users(
+			board_data = new Boards(
 					rs.getInt("ID"),
-					rs.getString("user_name"),
-					rs.getString("email"),
-					rs.getString("password"),
-					rs.getInt("house_id")
+					rs.getString("users_name"),
+					rs.getString("tattle"),
+					rs.getString("message"),
+					rs.getInt("post_date")
 					);
 
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			user_data = null;
+			board_data = null;
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			user_data = null;
+			board_data = null;
 		}
 		finally {
 			// データベースを切断
@@ -176,72 +183,12 @@ public class UserDAO {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					user_data = null;
+					board_data = null;
 				}
 			}
 		}
 		// 結果を返す
-		return user_data;
+		return board_data;
 	}
 
-	// ハウスIDで参加者リストを返す
-	public List<Users> list(int houses_id) {
-		Connection conn = null;
-		List<Users> userList = new ArrayList<Users>();
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("org.h2.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
-
-			//SQL文を準備する
-			String sql = "SELECT * FROM USERS WHERE houses_id = ?";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
-
-			//SQL文を完成させる
-			pStmt.setInt(1, houses_id);
-
-
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = pStmt.executeQuery();
-
-			//こここれでいいの？全部取ってきちゃう
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Users user_record = new Users(
-				rs.getInt("ID"),
-				rs.getString("user_name"),
-				rs.getString("email"),
-				rs.getString("password"),
-				rs.getInt("houses_id")
-				);
-				userList.add(user_record);
-			}
-
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-			userList = null;
-		}
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			userList = null;
-		}
-		finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-					userList = null;
-				}
-			}
-		}
-		// 結果を返す
-		return userList;
-	}
 }

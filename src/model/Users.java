@@ -7,19 +7,19 @@ public class Users implements Serializable {
 	private String user_name; //ユーザー名
 	private String email; //メールアドレス
 	private String password; //パスワード
-	private int house_id; //ハウスID
+	private int houses_id; //ハウスID
 
 	public Users() {
 
 	}
 
-	public Users(int ID, String user_name, String email, String password, int house_id) {
+	public Users(int ID, String user_name, String email, String password, int houses_id) {
 		super();
 		this.ID = ID;
 		this.user_name = user_name;
 		this.email = email;
 		this.password = password;
-		this.house_id = house_id;
+		this.houses_id = houses_id;
 	}
 
 	public int getID() {
@@ -54,12 +54,12 @@ public class Users implements Serializable {
 		this.password = password;
 	}
 
-	public int getHouse_id() {
-		return house_id;
+	public int getHouses_id() {
+		return houses_id;
 	}
 
-	public void setHouse_id(int house_id) {
-		this.house_id = house_id;
+	public void setHouse_id(int houses_id) {
+		this.houses_id = houses_id;
 	}
 
 }

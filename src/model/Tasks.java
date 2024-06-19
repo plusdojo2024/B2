@@ -3,19 +3,19 @@ package model;
 import java.io.Serializable;
 
 public class Tasks implements Serializable{
-	private int ID;
-	private int task_details_id;
-	private int users_id;
-	private String assigned_date;
-	private boolean task_finish;
-	private boolean item_finish;
-	private int houses_id;
+	private int ID; //ID
+	private int task_details_id; //タスク詳細ID
+	private int users_id; //ユーザーID
+	private int assigned_date; //割当日
+	private boolean task_finish; //家事完了フラグ
+	private boolean item_finish; //在庫完了フラグ
+	private int houses_id; //ハウスID
 
 	public Tasks(){
 
 	}
 
-	public Tasks(int ID, int task_details_id, int users_id, String assigned_date, boolean task_finish,
+	public Tasks(int ID, int task_details_id, int users_id, int assigned_date, boolean task_finish,
 			boolean item_finish, int houses_id) {
 		super();
 		this.ID = ID;
@@ -51,11 +51,11 @@ public class Tasks implements Serializable{
 		this.users_id = users_id;
 	}
 
-	public String getAssigned_date() {
+	public int getAssigned_date() {
 		return assigned_date;
 	}
 
-	public void setAssigned_date(String assigned_date) {
+	public void setAssigned_date(int assigned_date) {
 		this.assigned_date = assigned_date;
 	}
 

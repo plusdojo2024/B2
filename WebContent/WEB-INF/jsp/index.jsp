@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,9 +38,11 @@
 		<div>
 			<div>
 				<p>メンバー</p><br>
+				<c:forEach var="e" items="${user_list}" >
 				<ul>
-					<li>谷口</li>
+					<li>${e.user_name}</li>
 				</ul>
+				</c:forEach>
 			</div>
 			<div>
 				<p>消耗品在庫一覧</p><br>

@@ -78,54 +78,7 @@ public class BoardDAO {
 	// 結果を返す
 	return result;
 }
-	// 書き込めたらtrueを返す
-	public boolean isLoginOK(Boards board) {
-		Connection conn = null;
-		boolean loginResult = false;
 
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("org.h2.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
-
-			//SELECT文を準備する
-			String sql = "SELECT COUNT(*) FROM BOARDS WHERE users_id = ? AND tittle = ? AND message = ?";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, board.getUsers_id());
-			pStmt.setString(2,board.getTittle());
-			pStmt.setString(3,board.getMessage());
-
-			// SELECT文を実行し、結果表を取得する
-			ResultSet rs = pStmt.executeQuery();
-
-			//ユーザーの書き込みが完了しているかをチェックする？
-			rs.next();
-			if (rs.getInt("COUNT(*)") == 1) {
-				loginResult = true;
-			}
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-			loginResult = false;
-		}
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			loginResult = false;
-		}
-		finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-						loginResult = false;
-					}
-				}
-		}
 		// 結果を返す
 		return loginResult;
 	}

@@ -10,27 +10,38 @@
 </head>
 
 <body>
-	<header>
-		<div>
+<script src = "header.js"></script>
+	<header class = "header">
+		<div class = "header_inner">
 			<a>
 			<h1>FORESE</h1>
-			<img>人みたいなイラスト？
+			<img src = "" alt = "">
 			</a>
-		</div>
-		<div>
+
 			<a>
-			<img>通知イラスト
+			<img>
 			</a>
-		</div>
-		<div>
+
 			<a>
-			<img>やることリストイラスト
+			<img>
 			</a>
-		</div>
-		<div>
-			<a>
-			<img>ハンバーガーボタン
-			</a>
+
+			<div id="nav-wrapper" class="nav-wrapper">
+  <div class="hamburger" id="js-hamburger">
+    <span class="hamburger__line hamburger__line--1"></span>
+    <span class="hamburger__line hamburger__line--2"></span>
+    <span class="hamburger__line hamburger__line--3"></span>
+  </div>
+  <nav class="sp-nav">
+    <ul>
+      <li>メニュー1</li>
+      <li>メニュー1</li>
+      <li>メニュー1</li>
+    </ul>
+  </nav>
+  <div class="black-bg" id="js-black-bg"></div>
+ </div>
+
 		</div>
 	</header>
 </body>

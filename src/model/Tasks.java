@@ -6,7 +6,7 @@ public class Tasks implements Serializable{
 	private int ID;
 	private int task_details_id;
 	private int users_id;
-	private int assigned_date;
+	private String assigned_date;
 	private boolean task_finish;
 	private boolean item_finish;
 	private int houses_id;
@@ -15,7 +15,7 @@ public class Tasks implements Serializable{
 
 	}
 
-	public Tasks(int ID, int task_details_id, int users_id, int assigned_date, boolean task_finish,
+	public Tasks(int ID, int task_details_id, int users_id, String assigned_date, boolean task_finish,
 			boolean item_finish, int houses_id) {
 		super();
 		this.ID = ID;
@@ -51,11 +51,11 @@ public class Tasks implements Serializable{
 		this.users_id = users_id;
 	}
 
-	public int getAssigned_date() {
+	public String getAssigned_date() {
 		return assigned_date;
 	}
 
-	public void setAssigned_date(int assigned_date) {
+	public void setAssigned_date(String assigned_date) {
 		this.assigned_date = assigned_date;
 	}
 

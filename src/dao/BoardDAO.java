@@ -24,12 +24,12 @@ public class BoardDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2","sa", "");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO BOARDS VALUES (NULL, ?, ?, ?, NULL)";
+			String sql = "INSERT INTO BOARDS VALUES (0, ?, ?, ?, ?, 0)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (board.getUsers_id() != null && !board.getUsers_id().equals("")) {
-				pStmt.setString(1, board.getUsers_id());
+			if (board.getUser_name() != null && !board.getUser_name().equals("")) {
+				pStmt.setString(1, board.getUser_name());
 			}
 			else {
 				pStmt.setString(1, "（未設定）");
@@ -52,6 +52,7 @@ public class BoardDAO {
 			else {
 				pStmt.setString(4, "（未設定）");
 			}
+				pStmt.setInt(5, board.getHouses_id());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -79,9 +80,6 @@ public class BoardDAO {
 	return result;
 }
 
-		// 結果を返す
-		return loginResult;
-	}
 
 	//全件返すセレクトのやつ
 	public Boards selectAll(int houses_id) {
@@ -100,7 +98,7 @@ public class BoardDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
-				pStmt.setString(1, board.getHouses_id());
+				pStmt.setInt(1, board_data.getHouses_id());
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -111,7 +109,8 @@ public class BoardDAO {
 					rs.getString("users_name"),
 					rs.getString("tittle"),
 					rs.getString("message"),
-					rs.getInt("post_date")
+					rs.getString("post_date"),
+					rs.getInt("house_id")
 					);
 
 		}

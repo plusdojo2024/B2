@@ -43,7 +43,6 @@ public class HouseRegistServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
 
 		request.setCharacterEncoding("UTF-8");
 		// 改造（ここから）
@@ -66,8 +65,9 @@ public class HouseRegistServlet extends HttpServlet {
 		}
 		HouseDAO hDao = new HouseDAO();
 
+		System.out.println(hash);
+
 		// 登録処理を行う
-;
 
 		if (hDao.houseInsert(hash,password,house_name)) {
 			System.out.println("登録成功!");

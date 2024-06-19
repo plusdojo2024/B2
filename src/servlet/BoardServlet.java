@@ -24,6 +24,9 @@ public class BoardServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    // 現在の日付を取得する
+
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.UserDAO;
+import model.Users;
+
 
 /**
  * Servlet implementation class IndexServlet
@@ -33,15 +36,16 @@ public class IndexServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
 		dispatcher.forward(request, response);
 
+		// メンバーリスト
 		// リクエストパラメーターを取得
 		request.setCharacterEncoding("UTF-8");
-		int house_id = Integer.parseInt(request.getParameter("house_id"));
+		int houses_id = Integer.parseInt(request.getParameter("houses_id"));
 
 		// UserDAOのlistメソッドつかう
 		UserDAO userDao = new UserDAO();
-		if (userDao.list(house_id)) {
-			request.setAttribute("userList", userList);
-		}
+		List<Users> user_list = userDao.list(houses_id);
+
+		request.setAttribute("user_list", user_list);
 
 	}
 

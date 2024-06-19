@@ -185,7 +185,7 @@ public class UserDAO {
 	}
 
 	// ハウスIDで参加者リストを返す
-	public List<Users> list(int house_id) {
+	public List<Users> list(int houses_id) {
 		Connection conn = null;
 		List<Users> userList = new ArrayList<Users>();
 
@@ -197,11 +197,11 @@ public class UserDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
 			//SQL文を準備する
-			String sql = "SELECT * FROM USERS WHERE house_id = ?";
+			String sql = "SELECT * FROM USERS WHERE houses_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
-			pStmt.setInt(1, house_id);
+			pStmt.setInt(1, houses_id);
 
 
 			// SQL文を実行し、結果表を取得する
@@ -215,7 +215,7 @@ public class UserDAO {
 				rs.getString("user_name"),
 				rs.getString("email"),
 				rs.getString("password"),
-				rs.getInt("house_id")
+				rs.getInt("houses_id")
 				);
 				userList.add(user_record);
 			}

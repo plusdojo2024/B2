@@ -8,11 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.ExpenseDAO;
-import model.Expenses;
 import model.Houses;
+import model.Settlements;
 import model.Users;
+
 
 /**
  * Servlet implementation class ReceiptServlet
@@ -37,6 +39,8 @@ public class ReceiptServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	//リクエストパラメータを取得
@@ -44,29 +48,28 @@ public class ReceiptServlet extends HttpServlet {
 	String receipt_name = request.getParameter("receipt_name");
 	int receipt_amount = Integer.parseInt(request.getParameter("receipt_amount"));
 	String description = request.getParameter("description");
-	int expense_date = Integer.parseInt(request.getParameter("expense_date"));
+	String expense_date = request.getParameter("expense_date");
+	String settlement_date = request.getParameter("settlement_date");
+
+	HttpSession session = request.getSession();
+	 //セッションスコープでhouses_idをとってくる
+	Houses houses = (Houses)session.getAttribute("Houses");
+	int houses_id = houses.getID();
+	// セッションスコープでusers_idをとってくる
+	Users users = (Users)session.getAttribute("Users");
+	int users_id = users.getID();
 
 
 	//レシート登録処理
 		ExpenseDAO eDao = new ExpenseDAO();
-
-		if (eDao.insert(new Expenses(0, receipt_name, receipt_amount, description, expense_date))) {
+		// settlementテーブルの数に合わす
+		if (eDao.insert(new Settlements(0, users_id, receipt_name, receipt_amount,
+				description, expense_date, false, false, settlement_date, houses_id))) {
 			System.out.println("登録成功！");
 		}
 		else {
 			System.out.println("登録失敗！");
 		}
-
-
-		// セッションスコープでhouses_idをとってくる
-		Houses house_data = (Houses)session.getAttribute("Houses");
-		int houses_id = house_data.getHouse_hash();
-		// セッションスコープでusers_idをとってくる
-		Users user_data = (Users)session.getAttribute("Users");
-		int users_id = user_data.getUsers_id();
-
-
-
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/settlement.jsp");

@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
+import model.Houses;
 import model.Users;
 
 
@@ -33,19 +35,22 @@ public class IndexServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
-		dispatcher.forward(request, response);
+		HttpSession session = request.getSession();
 
 		// メンバーリスト
 		// リクエストパラメーターを取得
 		request.setCharacterEncoding("UTF-8");
-		int houses_id = Integer.parseInt(request.getParameter("houses_id"));
+		Houses houses = (Houses)session.getAttribute("Houses");
+		int houses_id = houses.getID();
 
 		// UserDAOのlistメソッドつかう
 		UserDAO userDao = new UserDAO();
 		List<Users> user_list = userDao.list(houses_id);
 
 		request.setAttribute("user_list", user_list);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
+		dispatcher.forward(request, response);
 
 	}
 

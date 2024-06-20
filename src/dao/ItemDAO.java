@@ -317,7 +317,7 @@ public class ItemDAO {
 						conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
 						// SQL文を準備する
-						String sql = "SELECT * FROM Items WHERE house_id = ? AND task_detail_id = ?";
+						String sql = "SELECT * FROM Items WHERE house_id = ? AND task_details_id = ?";
 						PreparedStatement pStmt = conn.prepareStatement(sql);
 						// SQL文を完成させる
 

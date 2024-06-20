@@ -15,8 +15,8 @@ import javax.servlet.http.HttpSession;
 import dao.TaskDAO;
 import dao.UserDAO;
 import model.Houses;
-import model.TaskAutoMember;
 import model.TaskAutoInfo;
+import model.TaskAutoMember;
 import model.Task_Details;
 import model.Users;
 
@@ -78,11 +78,8 @@ public class TaskAutoServlet extends HttpServlet {
 			taskData.add(new TaskAutoInfo(task.getTask_name(), task.getFrequency(), task.getEffort()));
 		}
 
-		// 個人の合計労力をgetterで取得して、比較してsetDataで割り当て家事・労力をいれる
-		for () {
-			TaskAutoMember autoMember = new TaskAutoMember(name);
-			autoMember.getTotal_effort();
-		}
+		// 一人あたりのHPを計算する
+
 
 
 

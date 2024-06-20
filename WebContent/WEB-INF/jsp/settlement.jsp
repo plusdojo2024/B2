@@ -22,9 +22,9 @@
 					<td>金額</td>
 					<td><input type="text" name="receipt_amount"></td>
 				</tr>
-				<tr>				<!-- 消すかも（登録者はどうするか？） -->
-					<td>登録者</td>
-					<td><input type="text" name="user_name"></td>
+				<tr>
+					<td>詳細</td>
+					<td><input type="text" name="詳細"></td>
 				</tr>
 			</table>
 			<input type="checkbox" value="fix_cost">固定費

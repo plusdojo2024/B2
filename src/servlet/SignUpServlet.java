@@ -52,7 +52,7 @@ public class SignUpServlet extends HttpServlet {
 		// 登録処理を行う insert
 		UserDAO userDao = new UserDAO();
 
-		if (userDao.insert(new Users(0,user_name, email, password, 0))) {	// 登録成功
+		if (userDao.insertUsers(new Users(0,user_name, email, password, 0))) {	// 登録成功
 			System.out.println("登録成功！");
 		}
 		else {											// 登録失敗

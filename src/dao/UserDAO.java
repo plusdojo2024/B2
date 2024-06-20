@@ -12,7 +12,7 @@ import model.Users;
 
 public class UserDAO {
 	// ユーザー登録
-	public boolean insert(Users user) {
+	public boolean insertUsers(Users user) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -123,8 +123,58 @@ public class UserDAO {
 		return loginResult;
 	}
 
+	//ユーザーが既に家に参加しているかどうか、していたらhouses_idを返す
+	public Integer houseExist(String email) {
+        Connection conn = null;
+        Integer houses_id = null;
+
+        try {
+            // JDBCドライバを読み込む
+            Class.forName("org.h2.Driver");
+
+            // データベースに接続する
+            conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
+
+            // SELECT文を準備する
+            String sql = "SELECT houses_id FROM USERS WHERE email = ? AND houses_id IS NOT NULL";
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+            pStmt.setString(1, email);
+
+            // SELECT文を実行し、結果表を取得する
+            ResultSet rs = pStmt.executeQuery();
+
+            //メールアドレスに一致するユーザーがいたかどうかをチェックする
+            if (rs.next()) {
+                houses_id = rs.getInt("houses_id");
+                if (rs.wasNull()) {
+                    houses_id = null;
+                }
+            }
+
+            rs.close();
+            pStmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            // データベースを切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        // 結果を返す
+        return houses_id;
+    }
+
+
 	//emailからデータ持ってくる
-	public Users select(Users user) {
+	public Users selectLoginUser(String email) {
 		Connection conn = null;
 		Users user_data;
 
@@ -140,12 +190,7 @@ public class UserDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
-			if (user.getEmail() != null) {
-				pStmt.setString(1, user.getEmail());
-			}
-			else {
-				pStmt.setString(1, "（未設定）");
-			}
+			pStmt.setString(1, email);
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();

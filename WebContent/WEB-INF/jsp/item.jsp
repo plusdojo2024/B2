@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ include file = "header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +16,7 @@
 				<table>
 					<tr>
 						<td>品目名</td>
-						<td><input type = "text" name = "item_name"></td>
+						<td><input type = "text" name = "item_name" size = "30"></td>
 					</tr>
 					<tr>
 						<td>家事関連名</td>
@@ -34,7 +34,7 @@
 					<optgroup label = "在庫状況">
 						<option value = "1">✕</option>
 						<option value = "2">△</option>
-						<option value = "3">○</option>
+						<option value = "3">◯</option>
 					</optgroup>
 					<optgroup label = "家事名">
 						<option value = "お風呂掃除">お風呂掃除</option>

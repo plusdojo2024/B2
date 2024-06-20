@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.ItemDAO;
+import model.Houses;
 import model.Items;
 
 /**
@@ -33,15 +35,20 @@ public class ItemRegistServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
-		int ID = Integer.parseInt(request.getParameter("ID"));
+
+		HttpSession session = request.getSession();
+
 		String item_name = request.getParameter("item_name");
 		int task_details_id = Integer.parseInt(request.getParameter("task_details_id"));
-		int status = Integer.parseInt(request.getParameter("status"));
+		Houses houses = (Houses)session.getAttribute("Houses");
+		int houses_id = houses.getID();
+
+
 
 		//在庫品の登録処理
 		ItemDAO itemDao = new ItemDAO();
 
-		if(itemDao.insert(new Items(0,item_name, 0, task_details_id , 0))) {
+		if(itemDao.insert(new Items(0,item_name, 0, task_details_id , houses_id))) {
 			System.out.println("登録成功！");
 		}
 		else {

@@ -8,20 +8,20 @@ public class Task_Details implements Serializable{
 	private String description; //説明
 	private int effort; //労力
 	private int frequency; //頻度
-	private int house_id; //ハウスID
+	private int houses_id; //ハウスID
 
 	public Task_Details() {
 
 	}
 
-	public Task_Details(int ID, String task_name, String description, int effort, int frequency, int house_id) {
+	public Task_Details(int ID, String task_name, String description, int effort, int frequency, int houses_id) {
 		super();
 		this.ID = ID;
 		this.task_name = task_name;
 		this.description = description;
 		this.effort = effort;
 		this.frequency = frequency;
-		this.house_id = house_id;
+		this.houses_id = houses_id;
 	}
 
 	public int getID() {
@@ -64,12 +64,12 @@ public class Task_Details implements Serializable{
 		this.frequency = frequency;
 	}
 
-	public int getHouse_id() {
-		return house_id;
+	public int getHouses_id() {
+		return houses_id;
 	}
 
-	public void setHouse_id(int house_id) {
-		this.house_id = house_id;
+	public void setHouses_id(int houses_id) {
+		this.houses_id = houses_id;
 	}
 
 

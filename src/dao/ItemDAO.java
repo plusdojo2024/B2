@@ -25,7 +25,7 @@ public class ItemDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO Items VALUES ( 0,?,?,?, ? )";
+			String sql = "INSERT INTO Items VALUES ( 0,?,3,?, ? )";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -39,12 +39,9 @@ public class ItemDAO {
 				pStmt.setString(1, "（未設定）");
 			}
 
-			if (item.getTask_details_id() != null && !item.getTask_details_id().equals("")) {
-				pStmt.setInt(1, item.getTask_details_id());
-			}
-			else {
-				pStmt.setInt(1, "（未設定）");
-			}
+			pStmt.setInt(2, item.getTask_details_id());
+
+			pStmt.setInt(3, item.getHouses_id());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -306,10 +303,11 @@ public class ItemDAO {
 					// 結果を返す
 					return itemList;
 				}
-				// ハウスIDで消耗品在庫リストを返す
-				public List<Items> tasklist(int task_details_id) {
+
+				//消耗品を家事関連で絞り込む
+				public List<Items> item_task(int house_id) {
 					Connection conn = null;
-					List<Items> taskList = new ArrayList<Items>();
+					List<Items> itemList = new ArrayList<Items>();
 
 					try {
 						// JDBCドライバを読み込む
@@ -319,8 +317,7 @@ public class ItemDAO {
 						conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
 						// SQL文を準備する
-						// 家事名で絞るけど、絞り方わからない
-						String sql = "SELECT * FROM Items WHERE house_id = ? ";
+						String sql = "SELECT * FROM Items WHERE house_id = ? AND task_details_id = ?";
 						PreparedStatement pStmt = conn.prepareStatement(sql);
 						// SQL文を完成させる
 

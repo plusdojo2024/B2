@@ -233,9 +233,9 @@ public class HouseDAO {
 
 
 	//house_hash（？）を返す house_hashではなくhouse_data??
-	public Houses selectByhash (Houses house) {
+	public Houses selectByhash (String house_hash) {
 		Connection conn = null;
-		Houses house_hash;
+		Houses houses = null;
 
 		try {
 			// JDBCドライバを読み込む
@@ -249,18 +249,12 @@ public class HouseDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
-			if (house.getHouse_hash() != null) {
-				pStmt.setString(1, house.getHouse_hash());
-			}
-			else {
-				pStmt.setString(1, "（未設定）");
-			}
-
+				pStmt.setString(1, house_hash);
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
 			// 結果表をコレクションにコピーする
-			house_hash = new Houses(
+			houses = new Houses(
 					rs.getInt("ID"),
 					rs.getString("house_hash"),
 					rs.getString("password"),
@@ -289,7 +283,7 @@ public class HouseDAO {
 			}
 		}
 		// 結果を返す
-		return house_hash;
+		return houses;
 	}
 
 	public Houses selectById (int houses_id) {

@@ -5,12 +5,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import model.Expenses;
+import model.Settlements;
 
-
+// テーブルはSettlementにExpensesを合体させた
+// なのでテーブルの名前はSettlement
+// DAOの名前は変えるとエラーになるからそのままExpensesDAOのまま
 public class ExpenseDAO {
+
 	// レシート登録
-	public boolean insert(Expenses expense) {
+	public boolean insert(Settlements settlement) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -22,25 +25,39 @@ public class ExpenseDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2","sa", "");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO EXPENSES VALUES (NULL, ?, ?, ?, ?)";
+			String sql = "INSERT INTO SETTLEMENTS VALUES (NULL, ?, ?, ?, ?, FALSE, FALSE, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (expense.getReceipt_name() != null && !expense.getReceipt_name().equals("")) {
-				pStmt.setString(1, expense.getReceipt_name());
+			// ユーザーid
+			pStmt.setInt(1, settlement.getUsers_id());
+			// 支出の種類
+			if (settlement.getReceipt_name() != null && !settlement.getReceipt_name().equals("")) {
+				pStmt.setString(2, settlement.getReceipt_name());
 			}
 			else {
-				pStmt.setString(1, "（未設定）");
+				pStmt.setString(2, "（未設定）");
 			}
 			// 金額
-				pStmt.setInt(2, expense.getReceipt_amount());
-
-			if (expense.getDescription() != null && !expense.getDescription().equals("")) {
-				pStmt.setString(3, expense.getDescription());
+				pStmt.setInt(3, settlement.getReceipt_amount());
+			// 詳細
+			if (settlement.getDescription() != null && !settlement.getDescription().equals("")) {
+				pStmt.setString(4, settlement.getDescription());
 			}
 			else {
-				pStmt.setString(3, "（未設定）");
+				pStmt.setString(4, "（未設定）");
 			}
+			// 支払日
+			pStmt.setString(5, settlement.get());
+
+			// 精算済みフラグ　初期値FALSE
+			// 承認済みフラグ　初期値FALSE
+
+			// 精算日
+			pStmt.setString(6, settlement.get());
+
+			// ハウスID
+			pStmt.setInt(7, settlement.getHouses_id());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {

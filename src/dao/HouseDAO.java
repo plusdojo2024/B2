@@ -5,12 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import model.Houses;
-//Houses型のHouse
-import model.Users;
 
 public class HouseDAO {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す ☆この検索はいる？？
@@ -190,10 +186,54 @@ public class HouseDAO {
 	}
 
 	// 家参加したらUSERSのテーブルのhouses_idに挿入される
+	public boolean update(int users_id, int houses_id){
+	Connection conn = null;
+	boolean result = false;
+
+	try {
+		// JDBCドライバを読み込む
+		Class.forName("org.h2.Driver");
+
+		// データベースに接続する
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
+
+		String sql = "UPDATE USERS SET HOUSES_ID=? WHERE ID=?";
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+
+		pStmt.setInt(1,houses_id);
+		pStmt.setInt(2,users_id);
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
+
+
 
 
 	//house_hash（？）を返す house_hashではなくhouse_data??
-	public Houses select (Houses house) {
+	public Houses selectByhash (Houses house) {
 		Connection conn = null;
 		Houses house_hash;
 
@@ -216,6 +256,59 @@ public class HouseDAO {
 				pStmt.setString(1, "（未設定）");
 			}
 
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			house_hash = new Houses(
+					rs.getInt("ID"),
+					rs.getString("house_hash"),
+					rs.getString("password"),
+					rs.getString("house_name")
+					);
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			house_hash = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			house_hash = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					house_hash = null;
+				}
+			}
+		}
+		// 結果を返す
+		return house_hash;
+	}
+
+	public Houses selectById (int houses_id) {
+		Connection conn = null;
+		Houses house_hash;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
+
+			//SQL文を準備する
+			String sql = "SELECT * FROM HOUSES WHERE houses_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//SQL文を完成させる
+				pStmt.setInt(1, houses_id);
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 

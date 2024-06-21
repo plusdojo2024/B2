@@ -6,17 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>FORESE | 消耗品登録/消耗品在庫一覧</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<main>
 		<div>
 			<div>
 				<h1>消耗品登録</h1>
-				<form action = "/B2/ItemRegistServlet" method = "post"></form>
+				<form action = "/B2/ItemRegistServlet" method = "post">
 				<table>
 					<tr>
 						<td>品目名</td>
-						<td><input type = "text" name = "item_name" size = "30"></td>
+						<td><input type = "text" name = "item_name"></td>
 					</tr>
 					<tr>
 						<td>家事関連名</td>
@@ -24,6 +25,7 @@
 					</tr>
 				</table>
 				<input type = "submit" value = "追加">
+				</form>
 			</div>
 
 			<div>

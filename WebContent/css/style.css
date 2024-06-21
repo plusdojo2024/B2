@@ -73,17 +73,27 @@ li {
 }
 
 input[type = "submit"] {
+	width: 100px;
 	background-color: #559588;
+	border-radius: 100px;
+	color: #e8ffdd;
+}
+
+input[type = "button"] {
+	width: 40px;
+	background-color: #ffffff;
 	border-radius: 100px;
 }
 
 input[type = "text"] {
 	border-radius: 20px;
+	width: 200px;
+	height: 30px;
 }
 
 
 table {
-	text-align: center;
+	margin: auto;
 }
 
 .footer {

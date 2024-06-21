@@ -47,21 +47,34 @@ public class LoginServlet extends HttpServlet {
 	HouseDAO houseDao = new HouseDAO();
 	if (userDao.isLoginOK(new Users(0, null, email, password, 0))) {
 
-		//セッションスコープにUsersのインスタンスを格納する
-		Users userResult = userDao.selectLoginUser(email);
-		session.setAttribute("Users", userResult);
-
 		Integer houses_id = userDao.houseExist(email);
 
 		//既に参加している家があるかどうかで遷移ページを変える
 		if(houses_id != null) {
 			Houses house = houseDao.selectById(houses_id);
 			session.setAttribute("Houses", house);
+
+			Users userResult = userDao.selectLoginUser(email);
+			session.setAttribute("Users", userResult);
+			if(userResult != null) {
+				System.out.println("nullでない");
+			}else {
+				System.out.println("nullである");
+			}
 			//リダイレクト
 			response.sendRedirect("/B2/IndexServlet");
 		}else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/house_login.jsp");
-			dispatcher.forward(request, response);
+
+			Users userResult = userDao.selectLoginUser2(email);
+			session.setAttribute("Users", userResult);
+
+			if(userResult != null) {
+				System.out.println("nullでない");
+			}else {
+				System.out.println("nullである");
+			}
+
+			response.sendRedirect("/B2/HouseRegistServlet");
 		}
 
 	}else {

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.HouseDAO;
 import model.Houses;
+import model.Users;
 
 
 /**
@@ -47,6 +48,10 @@ public class HouseJoinServlet extends HttpServlet {
 		String house_hash = request.getParameter("house_hash");
 		String password = request.getParameter("password");
 
+		Users user = (Users)session.getAttribute("Users");
+		int users_id = user.getID();
+
+
 		// ログイン処理を行う（参加）
 		HouseDAO houseDao = new HouseDAO();
 		if(houseDao.isLoginOK(new Houses(0, house_hash, password, null))) {	// ログイン成功
@@ -55,9 +60,15 @@ public class HouseJoinServlet extends HttpServlet {
 			Houses houses = hDao.selectByhash(house_hash);
 			session.setAttribute("Houses", houses);
 
+			if(hDao.update(users_id, houses.getID())) {
+				System.out.println("参加成功!");
 
-			// indexサーブレットにリダイレクトする
-			response.sendRedirect("/B2/IndexServlet");
+				response.sendRedirect("/B2/IndexServlet");
+			}else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/house_login.jsp");
+				dispatcher.forward(request, response);
+			}
+
 		}
 		else {		//ログイン失敗
 			System.out.println("参加に失敗しました。IDかパスワードに間違いがあります。");

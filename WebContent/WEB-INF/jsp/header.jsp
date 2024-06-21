@@ -14,13 +14,12 @@
 		<div class = "title">
 			<a>
 			<h1>FORESE</h1>
-			<img src = "" alt = "">
 			</a>
 		</div>
-
+		<div class = "three">
 		<div class = "notification">
 			<a>
-			<img>
+			<img src = "/B2/img/notification.png" height = "20px" width = "20px">
 			</a>
 		</div>
 
@@ -51,10 +50,10 @@
 				</ul>
 			</nav>
 		</div>
+		</div>
 	</header>
 
 	<footer class = "footer">
-
 	</footer>
 </body>
 </html>

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.HouseDAO;
 import model.Houses;
+import model.Users;
 
 /**
  * Servlet implementation class HouseRegistServlet
@@ -51,6 +52,8 @@ public class HouseRegistServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		LocalDateTime currentDateTime = LocalDateTime.now();
 
+		Users user = (Users)session.getAttribute("Users");
+		int users_id = user.getID();
 
 		// SHA-256でハッシュ化(house_nameとcurrentDateTimeを連結文字列にした)
 		String hashData = house_name+currentDateTime;
@@ -64,6 +67,7 @@ public class HouseRegistServlet extends HttpServlet {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
+
 		HouseDAO hDao = new HouseDAO();
 
 		System.out.println(house_hash);
@@ -74,9 +78,15 @@ public class HouseRegistServlet extends HttpServlet {
 
 			Houses houses = hDao.selectByhash(house_hash);
 			session.setAttribute("Houses", houses);
-			System.out.println("登録成功!");
 
-			response.sendRedirect("/B2/IndexServlet");
+			int houses_id = houses.getID();
+
+			if(hDao.update(users_id, houses_id)) {
+				System.out.println("登録成功!");
+
+				response.sendRedirect("/B2/IndexServlet");
+			}
+
 		}
 		else {
 			System.out.println("登録失敗!");

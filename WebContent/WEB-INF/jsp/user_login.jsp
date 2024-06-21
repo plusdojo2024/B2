@@ -26,7 +26,7 @@
 					<td><input type="password" name="password"></td>
 				</tr>
 			</table>
-			<input type="submit" value="登録">
+			<input class = "sub" type="submit" value="登録">
 			</form>
 		</div>
 		<hr>

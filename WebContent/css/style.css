@@ -10,6 +10,11 @@
 	text-align: left;
 	}
 
+.three {
+	justify-content: flex-end;
+	display: flex;
+}
+
 .hamburger {
 	top: 0px;
 }
@@ -65,3 +70,7 @@ li {
 	transform: translateX(-10%);
 }
 
+.sub {
+	background-color: #559588;
+	border-radius: 100px;
+}

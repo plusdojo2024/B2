@@ -48,8 +48,6 @@ public class ReceiptServlet extends HttpServlet {
 	String receipt_name = request.getParameter("receipt_name");
 	int receipt_amount = Integer.parseInt(request.getParameter("receipt_amount"));
 	String description = request.getParameter("description");
-	String expense_date = request.getParameter("expense_date");
-	String settlement_date = request.getParameter("settlement_date");
 
 	HttpSession session = request.getSession();
 	 //セッションスコープでhouses_idをとってくる
@@ -64,13 +62,12 @@ public class ReceiptServlet extends HttpServlet {
 		ExpenseDAO eDao = new ExpenseDAO();
 		// settlementテーブルの数に合わす
 		if (eDao.insert(new Settlements(0, users_id, receipt_name, receipt_amount,
-				description, expense_date, false, false, settlement_date, houses_id))) {
+				description, null, false, false, null, houses_id))) {
 			System.out.println("登録成功！");
 		}
 		else {
 			System.out.println("登録失敗！");
 		}
-
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/settlement.jsp");
 		dispatcher.forward(request, response);

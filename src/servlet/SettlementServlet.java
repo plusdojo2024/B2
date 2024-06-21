@@ -1,8 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.ExpenseDAO;
+import model.Houses;
 import model.Settlements;
+import model.Users;
 
 /**
  * Servlet implementation class SettlementServlet
@@ -36,6 +37,24 @@ public class SettlementServlet extends HttpServlet {
 
     //レシートの登録画面を出力
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//リクエストパラメータを取得
+		request.setCharacterEncoding("UTF-8");
+		String receipt_name = request.getParameter("receipt_name");
+		int receipt_amount = Integer.parseInt(request.getParameter("receipt_amount"));
+		String description = request.getParameter("description");
+		String expense_date = request.getParameter("expense_date");
+		String settlement_date = request.getParameter("settlement_date");
+
+		HttpSession session = request.getSession();
+		 //セッションスコープでhouses_idをとってくる
+		Houses houses = (Houses)session.getAttribute("Houses");
+		int houses_id = houses.getID();
+		// セッションスコープでusers_idをとってくる
+		Users users = (Users)session.getAttribute("Users");
+
+		// レシートの一覧を表示
+		ExpenseDAO eDao = new ExpenseDAO();
+		List<Settlements> ReceiptList= eDao.list(houses_id);
 		// レシート登録・精算画面（settlement.jsp）にフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/settlement.jsp");
 		dispatcher.forward(request, response);
@@ -48,23 +67,23 @@ public class SettlementServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		// リクエストパラメーターを取得
+		// リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
-		// どこまで必要なのかわからない
-		// Settlements.javaから持ってきたやつら
-//		int ID = Integer.parseInt(request.getParameter("ID"));
-		int user_id = 1;
+		String receipt_name = request.getParameter("receipt_name");
+		int receipt_amount = Integer.parseInt(request.getParameter("receipt_amount"));
+		String description = request.getParameter("description");
+		String expense_date = request.getParameter("expense_date");
+		String settlement_date = request.getParameter("settlement_date");
 
-		String receipt_name =request,getParameter("receipt_name"); //支出の種類
-		int receipt_amount; //金額
-		String description; //詳
-		Date now_date = new Date();
-		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
-		String now_date_string = dateformat.format(now_date);
-		int house_id =1;
-		Settlements settlement = new Settlements(0,user_id,receipt_name,receipt_amount,
-				description,
-				now_date_string,false,false,"",house_id);
+		HttpSession session = request.getSession();
+		// セッションスコープでhouses_idをとってくる
+		Houses houses = (Houses)session.getAttribute("Houses");
+		int houses_id = houses.getID();
+		// セッションスコープでusers_idをとってくる
+		Users users = (Users)session.getAttribute("Users");
+
+		// レシートを精算済みにする＋精算日の追加
+
 
 
 		//精算ボタンクリックされたらExpenseDAOを精算済みにする

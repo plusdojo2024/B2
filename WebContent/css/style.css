@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+body{
+	background-color: #f1f8e8;
+	text-align: center;
+	color: #5c5c5c;
+}
+
 .header {
 	text-align: right;
 	background-color: #559588;
@@ -10,12 +16,13 @@
 	text-align: left;
 	}
 
-.hamburger {
-	top: 0px;
+.three {
+	justify-content: flex-end;
+	display: flex;
 }
 
-input {
-	display: none;
+.hamburger {
+	top: 0px;
 }
 
 label {
@@ -65,3 +72,31 @@ li {
 	transform: translateX(-10%);
 }
 
+input[type = "submit"] {
+	width: 100px;
+	background-color: #559588;
+	border-radius: 100px;
+	color: #e8ffdd;
+}
+
+input[type = "button"] {
+	width: 40px;
+	background-color: #ffffff;
+	border-radius: 100px;
+}
+
+input[type = "text"] {
+	border-radius: 20px;
+	width: 200px;
+	height: 30px;
+}
+
+
+table {
+	margin: auto;
+}
+
+.footer {
+	background-color: #559588;
+	height: 80px;
+}

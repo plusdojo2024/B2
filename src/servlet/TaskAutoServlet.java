@@ -79,6 +79,10 @@ public class TaskAutoServlet extends HttpServlet {
 		}
 
 		// 一人あたりのHPを計算する
+		// （(労力×頻度)×総家事数）÷人数（+人数？）
+
+
+
 
 
 

@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -78,8 +79,42 @@ public class TaskAutoServlet extends HttpServlet {
 			taskData.add(new TaskAutoInfo(task.getTask_name(), task.getFrequency(), task.getEffort()));
 		}
 
-		// 一人あたりのHPを計算する
-		// （(労力×頻度)×総家事数）÷人数（+人数？）
+		// 家事名と曜日が格納されたArrayListの二次元配列をつくりたい
+
+		// 家事×頻度分の家事名を取得、Listに格納
+		ArrayList<String> taskName = new ArrayList<>();
+		int i;
+		for (i =0; i < taskData.size(); i++) {
+			for (int k = 0; k < taskData.get(i).getFrequency(); k++) {
+				taskName.add(taskData.get(i).getTask_name()));
+			}
+		}
+
+		// 曜日を確定する
+		Random rdm = new Random();
+		ArrayList<String> task = new ArrayList<>();
+		for (i =0; i < taskName.size(); i++) {
+			String num = String.valueOf(rdm.nextInt(7)); // 0=月、1=火、2=水、3=木、4=金、5=土、6=日
+			// ここで同じ数でてないかチェックしたい！！
+			// おそらくString型にキャストしたから.equals
+			// だがしかし、やりかたがわからない
+			// もしくは、値がnullだったら格納できるみたいな感じ？
+			task.add(num);
+		}
+
+
+		// 二次元配列
+		// これで二次元配列にきちんと格納できているのか
+		ArrayList<ArrayList<String>> assignLists = new ArrayList<ArrayList<String>>();
+		for (i =0; i < taskName.size(); i++) {
+			ArrayList<String> assignList = new ArrayList<>();
+			for (i =0; i < task.size(); i++) {
+				assignList.add(task);
+			}
+			assignLists.add(taskName);
+		}
+
+
 
 
 

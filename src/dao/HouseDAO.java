@@ -182,6 +182,7 @@ public class HouseDAO {
 		}
 
 		// 結果を返す
+		System.out.println(loginResult);
 		return loginResult;
 	}
 

@@ -34,7 +34,7 @@
  				<table>
  					<tr>
  						<td>ID</td>
- 						<td><input type="text" name="id"></td>
+ 						<td><input type="text" name="house_hash"></td>
  					</tr>
  					<tr>
  						<td>パスワード</td>

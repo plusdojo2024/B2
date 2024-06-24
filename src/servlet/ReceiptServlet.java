@@ -64,13 +64,16 @@ public class ReceiptServlet extends HttpServlet {
 		if (eDao.insert(new Settlements(0, users_id, receipt_name, receipt_amount,
 				description, null, false, false, null, houses_id))) {
 			System.out.println("登録成功！");
+			response.sendRedirect("/B2/SettlementServlet");
+
 		}
 		else {
 			System.out.println("登録失敗！");
+			// 結果フォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/settlement.jsp");
+			dispatcher.forward(request, response);
 		}
-		// 結果フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/settlement.jsp");
-		dispatcher.forward(request, response);
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

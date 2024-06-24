@@ -11,8 +11,8 @@
 
 <body>
 	<div>
-		<p>ID: ${Users.ID}</p>
-		<p>ID: ${Houses.ID}</p>
+		<p>USER ID: ${Users.ID}</p>
+		<p>HOUSE ID: ${Houses.house_hash}</p>
 	</div>
 	<main>
 		<div class="upmain">

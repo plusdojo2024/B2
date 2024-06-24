@@ -1,0 +1,88 @@
+@charset "UTF-8";
+header {
+  display: flex;
+  width: 100%;
+  height: 150px;
+  color: #e8ffdd;
+  background-color: #559588;
+  align-items: center;
+
+/*ヘッダー固定*/
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.title {
+  margin-right: auto;
+}
+
+.menu-item {
+  list-style: none;
+  display: inline-block;
+  padding: 10px;
+}
+body{
+	margin: 0;
+	background-color: #f1f8e8;
+	text-align: left;
+	font-size: 25px;
+	color: #5c5c5c;
+}
+
+a {
+	width: 100px;
+	padding: 15px;
+	background-color: #D46934;
+	border-radius: 100px;
+	color: #e8ffdd;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.image {
+	margin-right: calc(50% - 50vw);
+	margin-left: calc(50% - 50vw);
+}
+
+.image img {
+	display: block;
+	width: 100%;
+	height: 500px;
+}
+
+.image {
+  position: relative;/*親要素にrelative*/
+}
+.image p{
+  position: absolute;/*重ねたい子要素にabsolute*/
+  top:65%;
+  left: 50%;
+ -ms-transform: translate(-50%,-50%);/*ベンダープレフィックス*/
+  -webkit-transform: translate(-50%,-50%);/*ベンダープレフィックス*/
+  transform: translate(-50%,-50%);/*センター寄せの修正*/
+  color: #fff;
+  font-size: 4rem;
+  font-weight: bold;
+  outline: black;
+  margin: 0!important;/*文字がずれている場合や*/
+  padding: 0!important;/*文字が折り返される場合*/
+}
+
+main p {
+    line-height:1.7;
+}
+
+.all {
+	margin: 90px auto 90px auto;
+    max-width: 1000px;
+}
+
+footer {
+	background-color: #559588;
+	height: 80px;
+}
+

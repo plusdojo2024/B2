@@ -10,6 +10,10 @@
 </head>
 
 <body>
+	<div>
+		<p>ID: ${Users.ID}</p>
+		<p>ID: ${Houses.ID}</p>
+	</div>
 	<main>
 		<div>
 			<div>

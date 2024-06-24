@@ -290,7 +290,7 @@ public class HouseDAO {
 
 	public Houses selectById (int houses_id) {
 		Connection conn = null;
-		Houses house_hash;
+		Houses houses;
 
 		try {
 			// JDBCドライバを読み込む
@@ -300,7 +300,7 @@ public class HouseDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
 			//SQL文を準備する
-			String sql = "SELECT * FROM HOUSES WHERE houses_id = ?";
+			String sql = "SELECT * FROM HOUSES WHERE ID = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
@@ -310,7 +310,7 @@ public class HouseDAO {
 
 			rs.next();
 			// 結果表をコレクションにコピーする
-			house_hash = new Houses(
+			houses = new Houses(
 					rs.getInt("ID"),
 					rs.getString("house_hash"),
 					rs.getString("password"),
@@ -320,11 +320,11 @@ public class HouseDAO {
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			house_hash = null;
+			houses = null;
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			house_hash = null;
+			houses = null;
 		}
 		finally {
 			// データベースを切断
@@ -334,11 +334,11 @@ public class HouseDAO {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					house_hash = null;
+					houses = null;
 				}
 			}
 		}
 		// 結果を返す
-		return house_hash;
+		return houses;
 	}
 }

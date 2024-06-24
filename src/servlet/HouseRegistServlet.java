@@ -79,7 +79,14 @@ public class HouseRegistServlet extends HttpServlet {
 			Houses houses = hDao.selectByhash(house_hash);
 			session.setAttribute("Houses", houses);
 
+			if(houses != null) {
+				System.out.println("nullでない");
+			}else {
+				System.out.println("nullである");
+			}
+
 			int houses_id = houses.getID();
+
 
 			if(hDao.update(users_id, houses_id)) {
 				System.out.println("登録成功!");

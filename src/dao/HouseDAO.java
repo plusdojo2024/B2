@@ -254,6 +254,7 @@ public class HouseDAO {
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
+			rs.next();
 			// 結果表をコレクションにコピーする
 			houses = new Houses(
 					rs.getInt("ID"),
@@ -307,6 +308,7 @@ public class HouseDAO {
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
+			rs.next();
 			// 結果表をコレクションにコピーする
 			house_hash = new Houses(
 					rs.getInt("ID"),

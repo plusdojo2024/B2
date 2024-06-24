@@ -116,10 +116,4 @@ public class Settlements implements Serializable{
 	}
 
 
-
-
-
-
-
-
 }

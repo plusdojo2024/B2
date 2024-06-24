@@ -6,11 +6,12 @@
 
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class TaskAuto {
 	public static void main(String[] args) {
-	Random rdm = new Random();
 	TaskAutoMember AutoMember = new TaskAutoMember();
 	TaskAutoInfo AutoInfo = new TaskAutoInfo();
 	String [] AutoMemberTable; // メンバーを入れる配列
@@ -22,15 +23,16 @@ public class TaskAuto {
 
 	// 曜日を確定するメソッド → メインメソッド
 	public void date_confirm() {
+		Random rdm = new Random();
 		// 格納するための配列task
-		int [] task = new int[AutoInfo.frequency];
+		List<Integer> task = new ArrayList<>();
 		// 頻度数だけ繰り返す
-		for (int i = 0; i < AutoInfo.frequency; i++) {
+		for (int j = 0; j < taskData.get(i).getFrequency(); j++) {
 			int num = rdm.nextInt(7);
 			// ここで同じ数でてないかチェックしたい！！
 
 			// task配列にnumを格納
-			task[i] = num;
+			task.add(num);
 		}
 	}
 }

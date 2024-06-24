@@ -6,10 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>家事登録</title>
+<link rel="stylesheet" href="css/task_regist.css">
 </head>
 <body>
 	<main>
-		<div>
+		<div><!-- ボタン（画像にリンクをつける）か、リンクをボタンぽくデザインするか -->
+			<a href = "/B2/TaskServlet">分担一覧</a>
+			<a href = "/B2/TaskServlet">登録</a>
+			<a href = "/B2/TaskServlet">振り分け</a>
 			<input type="submit"  value="分担一覧">
 			<input type="submit"  value="登録">
 			<input type="submit"  value="振り分け">
@@ -23,7 +27,7 @@
  				</tr>
  				<tr>
  					<td>頻度</td>
- 					<td><select name="frequency">
+ 					<td class = "hindo"><select name="frequency">
 						<option value="fir">1</option>
 						<option value="sec">2</option>
 						<option value="thi">3</option>

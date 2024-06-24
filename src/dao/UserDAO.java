@@ -196,13 +196,76 @@ public class UserDAO {
 			ResultSet rs = pStmt.executeQuery();
 
 			// 結果表をコレクションにコピーする
-			user_data = new Users(
-					rs.getInt("ID"),
-					rs.getString("user_name"),
-					rs.getString("email"),
-					rs.getString("password"),
-					rs.getInt("house_id")
-					);
+			if (rs.next()) {
+			    user_data = new Users(
+			                    rs.getInt("ID"),
+			                    rs.getString("user_name"),
+			                    rs.getString("email"),
+			                    rs.getString("password"),
+			                    rs.getInt("houses_id")
+			            );
+			} else {
+			    user_data = null; // もしくは初期化時にnullを代入しておく
+			}
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			user_data = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			user_data = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					user_data = null;
+				}
+			}
+		}
+		// 結果を返す
+		return user_data;
+	}
+
+	public Users selectLoginUser2(String email) {
+		Connection conn = null;
+		Users user_data;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
+
+			//SQL文を準備する
+			String sql = "SELECT * FROM USERS WHERE email = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//SQL文を完成させる
+			pStmt.setString(1, email);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			if (rs.next()) {
+			    user_data = new Users(
+			                    rs.getInt("ID"),
+			                    rs.getString("user_name"),
+			                    rs.getString("email"),
+			                    rs.getString("password"),
+			                    rs.getInt("houses_id")
+			            );
+			} else {
+			    user_data = null; // もしくは初期化時にnullを代入しておく
+			}
 
 		}
 		catch (SQLException e) {

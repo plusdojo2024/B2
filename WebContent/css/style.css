@@ -1,18 +1,22 @@
 @charset "UTF-8";
 
 body{
+	margin: 0;
 	background-color: #f1f8e8;
 	text-align: center;
+	font-size: 25px;
 	color: #5c5c5c;
 }
 
 .header {
+	margin-top: 0;
 	text-align: right;
 	background-color: #559588;
-	height: 80px;
+	height: 60px;
 }
 
 .title {
+	margin-top: 0;
 	text-align: left;
 	}
 
@@ -73,17 +77,27 @@ li {
 }
 
 input[type = "submit"] {
+	width: 100px;
 	background-color: #559588;
+	border-radius: 100px;
+	color: #e8ffdd;
+}
+
+input[type = "button"] {
+	width: 40px;
+	background-color: #ffffff;
 	border-radius: 100px;
 }
 
 input[type = "text"] {
 	border-radius: 20px;
+	width: 200px;
+	height: 30px;
 }
 
 
 table {
-	text-align: center;
+	margin: auto;
 }
 
 .footer {

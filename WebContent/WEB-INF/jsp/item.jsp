@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>FORESE | 消耗品登録/消耗品在庫一覧</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/item.css">
 </head>
 <body>
 	<main>
@@ -27,6 +28,8 @@
 				<input type = "submit" value = "追加">
 				</form>
 			</div>
+
+			<hr>
 
 			<div>
 				<h1>消耗品在庫一覧</h1>
@@ -51,16 +54,16 @@
 					<table>
 						<tr>
 							<td><input type = "checkbox" name = "item_choice" value = "chacked"></td>
-							<td>品目名</td>
+							<td >品目名</td>
 							<td><input type = "text" name = "item_name"></td>
-							<td><input type = "button" name = 3 ></td>
-							<td><input type = "button" name = 2 ></td>
-							<td><input type = "button" name = 1 ></td>
+							<td><input type = "button" name = 3 value = ◯></td>
+							<td><input type = "button" name = 2 value = △></td>
+							<td><input type = "button" name = 1 value = ✕></td>
 							<td></td>
 						</tr>
 					</table>
-					<input type = "button" value = "更新">
-					<input type = "button" value = "削除">
+					<input type = "submit" value = "更新">
+					<input type = "submit" value = "削除">
 			</div>
 		</div>
 	</main>

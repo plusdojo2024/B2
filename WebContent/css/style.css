@@ -19,7 +19,7 @@ header {
   align-items: center;
 
 /*ヘッダー固定*/
-  position: sticky;
+  position: fixed;
   z-index: 999;
   top: 0;
   left: 0;
@@ -90,6 +90,10 @@ ul {
 
 li {
 	list-style: none;
+}
+
+main {
+  margin-top: 150px; /* 上の空白を150pxに指定 */
 }
 
 

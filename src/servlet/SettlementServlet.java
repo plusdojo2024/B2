@@ -89,6 +89,7 @@ public class SettlementServlet extends HttpServlet {
 		if (request.getParameter("submit").equals("精算")) {
 			if (expenseDao.update(houses_id, settlement_id, settlement_date)) {
 				System.out.println("精算成功！");
+				response.sendRedirect("/B2/SettlementServlet");
 			}
 			else {
 				System.out.println("精算失敗！");
@@ -109,6 +110,7 @@ public class SettlementServlet extends HttpServlet {
 		if (request.getParameter("submit").equals("削除")) {
 			if (expenseDao.delete(houses_id, settlement_id)) {
 				System.out.println("削除成功！");
+				response.sendRedirect("/B2/SettlementServlet");
 			}
 			else {
 				System.out.println("削除失敗！");

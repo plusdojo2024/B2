@@ -20,7 +20,7 @@ import model.Task_Details;
 /**
  * Servlet implementation class ItemServlet
  */
-@WebServlet("/ItemServlet")
+@WebServlet("/ItemRegistServlet")
 public class ItemRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -23,7 +23,7 @@
 					<tr>
 						<td>家事関連名</td>
 						<td>
-						<select>
+						<select name="task_details_id">
 						<c:forEach var="task" items="${taskDetailsList}">
 							<option value="${task.ID}">${task.task_name}</option>
 						</c:forEach>

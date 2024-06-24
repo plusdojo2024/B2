@@ -6,9 +6,11 @@ body{
 	text-align: center;
 	font-size: 25px;
 	color: #5c5c5c;
+
 }
 
-.header {
+
+header {
   display: flex;
   width: 100%;
   height: 150px;
@@ -17,7 +19,7 @@ body{
   align-items: center;
 
 /*ヘッダー固定*/
-  position: fixed;
+  position: sticky;
   z-index: 999;
   top: 0;
   left: 0;
@@ -27,8 +29,9 @@ body{
 
 
 .title {
-	margin-top: 0;
-	text-align: left;
+	 margin-right: auto;
+	 text-decoration: none;
+	 color: #e8ffdd;
 	}
 
 .three {
@@ -37,7 +40,11 @@ body{
 }
 
 .hamburger {
-	top: 0px;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+
+
 }
 
 label {
@@ -71,6 +78,10 @@ nav {
 	width: 90%;
 	height: 100%;
 	transform: translateX(-120%);
+	text-align:right;
+	background-clip: text;
+	background-color:white;
+	padding: 10px 5px 10px 5px;
 }
 
 ul {
@@ -80,7 +91,6 @@ ul {
 li {
 	list-style: none;
 }
-
 
 
 #check:checked ~ nav {

@@ -11,9 +11,9 @@
 
 <body>
 	<header class = "header">
-		<div class = "title">
-			<a>
-			<h1>FORESE</h1>
+		<div>
+			<a href="/B2/IndexServlet" style="text-decoration:none;">
+			<h1 class = "title">FORESE</h1>
 			</a>
 		</div>
 		<div class = "three">

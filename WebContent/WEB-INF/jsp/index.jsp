@@ -18,9 +18,9 @@
 		<div class="upmain">
 			<div class="upmain2">
 				<div class="taskmanagement">
-					<img src="img/task.png"><br>
-					<p>家事管理</p>
-					<a href="/B2/TaskServlet"></a>
+
+					<a href="/B2/TaskServlet"><img src="img/task.png">
+					<p>家事管理</p></a>
 				</div>
 				<div class="支出管理">
 					<img src="img/expense.png"><br>

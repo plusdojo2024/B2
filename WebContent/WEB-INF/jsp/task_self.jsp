@@ -6,19 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/task_self.css">
 </head>
 <body>
 
   <main>
 	<div>
-	<h2>分担一覧</h2><h2>登録</h2><h2>振り分け</h2><!-- 横並び -->
+	<input type="submit"  onclick="location.href='/B2/TaskServlet'" value="分担一覧">
+	<input type="submit"  onclick="location.href='/B2/TaskServlet'" value="登録">
+	<input type="submit"   onclick="location.href='/B2/TaskServlet'"value="振り分け">
 	</div>
-	<div>
-		<input type="radio"  name="contact" value="email" />
-		<label for="contactChoice1">自動</label>
+	<div class="radiobuttun">
+		<input type="radio" > <!--  name="contact" value="email" /-->
+		<label id="radiobuttun" for="contactChoice1">自動</label>
 
-		<input type="radio" name="contact" value="phone" />
-		<label for="contactChoice2">手動</label>
+		<input type="radio" ><!--  name="contact" value="phone" /-->
+		<label id="radiobuttun"for="contactChoice2">手動</label>
 	</div>
 
 	<div>

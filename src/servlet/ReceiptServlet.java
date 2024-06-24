@@ -68,7 +68,7 @@ public class ReceiptServlet extends HttpServlet {
 		else {
 			System.out.println("登録失敗！");
 		}
-
+		// 結果フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/settlement.jsp");
 		dispatcher.forward(request, response);
 	/**

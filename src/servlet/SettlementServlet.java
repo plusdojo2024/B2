@@ -35,7 +35,7 @@ public class SettlementServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 
-    //レシートの登録画面を出力
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
@@ -73,6 +73,7 @@ public class SettlementServlet extends HttpServlet {
 		int receipt_amount = Integer.parseInt(request.getParameter("receipt_amount"));
 		String description = request.getParameter("description");
 		String expense_date = request.getParameter("expense_date");
+		int settlement_id = Integer.parseInt(request.getParameter("settlement_id"));
 		String settlement_date = request.getParameter("settlement_date");
 
 		HttpSession session = request.getSession();
@@ -83,14 +84,35 @@ public class SettlementServlet extends HttpServlet {
 		Users users = (Users)session.getAttribute("Users");
 
 		// レシートを精算済みにする＋精算日の追加
-
-
-
-		//精算ボタンクリックされたらExpenseDAOを精算済みにする
 		ExpenseDAO expenseDao = new ExpenseDAO();
+		if (expenseDao.update(houses_id, settlement_id, settlement_date)) {
+			System.out.println("精算成功！");
+		}
+		else {
+			System.out.println("精算失敗！");
+		}
+
+		// レシートを承認済みにする
+		if (expenseDao.update(houses_id, settlement_id)) {
+			System.out.println("承認成功！");
+		}
+		else {
+			System.out.println("承認失敗！");
+		}
+
+		// レシートの削除
+		if (expenseDao.delete(houses_id, settlement_id)) {
+			System.out.println("削除成功！");
+		}
+		else {
+			System.out.println("削除失敗！");
+		}
 
 
-		expenseDao.insert(settlement);
+		// 結果フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/settlement.jsp");
+		dispatcher.forward(request, response);
+
 
 
 		if (expenseDao.setClear(ID)){

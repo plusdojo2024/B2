@@ -17,7 +17,7 @@
 	<main>
 		<div class="upmain">
 			<div class="upmain2">
-				<div class="家事管理">
+				<div class="taskmanagement">
 					<img src="img/task.png"><br>
 					<p>家事管理</p>
 					<a href="/B2/TaskServlet"></a>

@@ -22,7 +22,13 @@
 					</tr>
 					<tr>
 						<td>家事関連名</td>
-						<td><input type = "text" name = "task_name"></td>
+						<td>
+						<select>
+						<c:forEach var="task" items="${taskDetailsList}">
+							<option value="${task.ID}">${task.task_name}</option>
+						</c:forEach>
+						</select>
+						</td>
 					</tr>
 				</table>
 				<input type = "submit" value = "追加">

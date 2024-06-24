@@ -42,12 +42,12 @@ public class HouseJoinServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session =request.getSession();
 		// リクエストパラメーターを取得
 		request.setCharacterEncoding("UTF-8");
 		String house_hash = request.getParameter("house_hash");
 		String password = request.getParameter("password");
 
+		HttpSession session =request.getSession();
 		Users user = (Users)session.getAttribute("Users");
 		int users_id = user.getID();
 

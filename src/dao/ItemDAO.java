@@ -25,7 +25,7 @@ public class ItemDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO Items VALUES ( 0,?,3,?, ? )";
+			String sql = "INSERT INTO Items VALUES ( NULL,?,3,?, ? )";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

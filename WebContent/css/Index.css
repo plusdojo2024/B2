@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+.upmain {
+	justify-content:center; /* 中央寄せ */
+	margin-right: 20px;
+}
+.upmain2 {
+	display: flex;
+
+}
+
+.taskmanagement {
+	padding: 0em 3em;
+	margin: 1em ;
+	font-weight: bold;
+	color: #5c5c5c;/*文字色*/
+    background: #FFF;
+    border: solid 1px #5c5c5c;/*線*/
+    border-radius: 50px;/*角の丸み*/
+}
+.支出管理 {
+	padding: 0.7em 3em;
+	margin: 1em ;
+	font-weight: bold;
+	color: #5c5c5c;/*文字色*/
+    background: #FFF;
+    border: solid 1px #5c5c5c;/*線*/
+    border-radius: 50px;/*角の丸み*/
+}
+.消耗品管理 {
+	padding: 0.8em 3em;
+	margin: 1em ;
+	font-weight: bold;
+	color: #5c5c5c;/*文字色*/
+    background: #FFF;
+    border: solid 1px #5c5c5c;/*線*/
+    border-radius: 50px;/*角の丸み*/
+}
+
+.カレンダー {
+	flex-direction:colum;
+	justify-content:center;
+	padding: 0.1em 3em;
+	margin: 0.5em;
+	font-weight: bold;
+	color: #5c5c5c;/*文字色*/
+    background: #FFF;
+    border: solid 1px #5c5c5c;/*線*/
+    border-radius: 50px;/*角の丸み*/
+    width:150px;
+    position:relative;
+	left:1000px;
+	top:-250px;
+}
+
+.掲示板 {
+	flex-direction:colum;
+	justify-content:center;
+	padding: 0.8em 3em;
+	margin: 3em 0;
+	font-weight: bold;
+	color: #5c5c5c;/*文字色*/
+    background: #FFF;
+    border: solid 1px #5c5c5c;/*線*/
+    border-radius: 50px;/*角の丸み*/
+        width:150px;
+    position:relative;
+	left:1000px;
+	top:-250px;
+}
+.メンバー {
+	padding: 5em 4em;
+	margin: 1em;
+	font-weight: bold;
+	color: #5c5c5c;/*文字色*/
+    background: #FFF;
+    border: solid 1px #5c5c5c;/*線*/
+    border-radius: 50px;/*角の丸み*/
+}
+.消耗品在庫一覧 {
+	padding: 0.8em 7em;
+	margin: 1;
+	font-weight: bold;
+	color: #5c5c5c;/*文字色*/
+    background: #FFF;
+    border: solid 1px #5c5c5c;/*線*/
+    border-radius: 50px;/*角の丸み*/
+}
+.やることリスト {
+	padding: 0.8em 10em;
+	margin: 1em;
+	font-weight: bold;
+	color: #5c5c5c;/*文字色*/
+    background: #FFF;
+    border: solid 1px #5c5c5c;/*線*/
+    border-radius: 50px;/*角の丸み*/
+}
+.全体の支出 {
+	padding: 0.8em 12em;
+	margin: 1em;
+	font-weight: bold;
+	color: #5c5c5c;/*文字色*/
+    background: #FFF;
+    border: solid 1px #5c5c5c;/*線*/
+    border-radius: 50px;/*角の丸み*/
+}
+.今日のイベント {
+	padding: 0.8em 12em;
+	margin: 1em;
+	font-weight: bold;
+	color: #5c5c5c;/*文字色*/
+    background: #FFF;
+    border: solid 1px #5c5c5c;/*線*/
+    border-radius: 50px;/*角の丸み*/
+}
+
+.centermain {
+  display: flex;
+  justify-content: center; /* 中央寄せ */
+}
+
+.downmain {
+  display: flex;
+  justify-content: center; /* 中央寄せ */
+}

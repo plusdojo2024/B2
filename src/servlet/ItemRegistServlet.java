@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,13 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.ItemDAO;
+import dao.TaskDAO;
 import model.Houses;
 import model.Items;
+import model.Task_Details;
 
 /**
  * Servlet implementation class ItemServlet
  */
-@WebServlet("/ItemServlet")
+@WebServlet("/ItemRegistServlet")
 public class ItemRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -25,6 +28,22 @@ public class ItemRegistServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+		Houses houses = (Houses)session.getAttribute("Houses");
+		int houses_id = houses.getID();
+
+		TaskDAO taskDao = new TaskDAO();
+		List<Task_Details> task_list = taskDao.list(houses_id);
+
+		if(task_list != null) {
+			System.out.println("task_listがnullでない");
+		}else {
+			System.out.println("task_listがnullである");
+		}
+
+		request.setAttribute("taskDetailsList", task_list);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/item.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -48,7 +67,7 @@ public class ItemRegistServlet extends HttpServlet {
 		//在庫品の登録処理
 		ItemDAO itemDao = new ItemDAO();
 
-		if(itemDao.insert(new Items(0,item_name, 0, task_details_id , houses_id))) {
+		if(itemDao.itemInsert(new Items(0,item_name, 0, task_details_id , houses_id))) {
 			System.out.println("登録成功！");
 		}
 		else {
@@ -57,7 +76,7 @@ public class ItemRegistServlet extends HttpServlet {
 
 
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/house_login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/item.jsp");
 		dispatcher.forward(request, response);
 	}
 

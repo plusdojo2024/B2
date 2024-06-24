@@ -1,18 +1,33 @@
 @charset "UTF-8";
 
 body{
+	margin: 0;
 	background-color: #f1f8e8;
 	text-align: center;
+	font-size: 25px;
 	color: #5c5c5c;
 }
 
 .header {
-	text-align: right;
-	background-color: #559588;
-	height: 80px;
+  display: flex;
+  width: 100%;
+  height: 150px;
+  color: #e8ffdd;
+  background-color: #559588;
+  align-items: center;
+
+/*ヘッダー固定*/
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  padding: 20px 40px;
+  box-sizing: border-box;
 }
 
+
 .title {
+	margin-top: 0;
 	text-align: left;
 	}
 
@@ -73,10 +88,12 @@ li {
 }
 
 input[type = "submit"] {
-	width: 100px;
+	width: 150px;
 	background-color: #559588;
 	border-radius: 100px;
 	color: #e8ffdd;
+	font-size:30px;
+	margin:0.7em;
 }
 
 input[type = "button"] {
@@ -100,3 +117,5 @@ table {
 	background-color: #559588;
 	height: 80px;
 }
+
+

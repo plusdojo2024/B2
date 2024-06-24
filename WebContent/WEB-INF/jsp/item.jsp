@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file = "header.jsp" %>
+<jsp:include page="header.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +22,13 @@
 					</tr>
 					<tr>
 						<td>家事関連名</td>
-						<td><input type = "text" name = "task_name"></td>
+						<td>
+						<select name="task_details_id">
+						<c:forEach var="task" items="${taskDetailsList}">
+							<option value="${task.ID}">${task.task_name}</option>
+						</c:forEach>
+						</select>
+						</td>
 					</tr>
 				</table>
 				<input type = "submit" value = "追加">
@@ -67,5 +73,7 @@
 			</div>
 		</div>
 	</main>
+	<footer>
+	</footer>
 </body>
 </html>

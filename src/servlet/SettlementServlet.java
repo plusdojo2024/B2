@@ -85,27 +85,33 @@ public class SettlementServlet extends HttpServlet {
 
 		// レシートを精算済みにする＋精算日の追加
 		ExpenseDAO expenseDao = new ExpenseDAO();
-		if (expenseDao.update(houses_id, settlement_id, settlement_date)) {
-			System.out.println("精算成功！");
-		}
-		else {
-			System.out.println("精算失敗！");
+		if (request.getParameter("submit").equals("精算")) {
+			if (expenseDao.update(houses_id, settlement_id, settlement_date)) {
+				System.out.println("精算成功！");
+			}
+			else {
+				System.out.println("精算失敗！");
+			}
 		}
 
-		// レシートを承認済みにする
-		if (expenseDao.update(houses_id, settlement_id)) {
-			System.out.println("承認成功！");
-		}
-		else {
-			System.out.println("承認失敗！");
+		// レシートを承認済みにする（実装検討中）
+		if (request.getParameter("submit").equals("承認")) {
+			if (expenseDao.update(houses_id, settlement_id)) {
+				System.out.println("承認成功！");
+			}
+			else {
+				System.out.println("承認失敗！");
+			}
 		}
 
 		// レシートの削除
-		if (expenseDao.delete(houses_id, settlement_id)) {
-			System.out.println("削除成功！");
-		}
-		else {
-			System.out.println("削除失敗！");
+		if (request.getParameter("submit").equals("削除")) {
+			if (expenseDao.delete(houses_id, settlement_id)) {
+				System.out.println("削除成功！");
+			}
+			else {
+				System.out.println("削除失敗！");
+			}
 		}
 
 
@@ -115,13 +121,13 @@ public class SettlementServlet extends HttpServlet {
 
 
 
-		if (expenseDao.setClear(ID)){
+		//if (expenseDao.setClear(ID)){
 			// settlementサーブレットにリダイレクトする
-			response.sendRedirect("/B2/SettlementServlet");
-		}
-		else {
-			System.out.println("精算失敗！");
-		}
+			//response.sendRedirect("/B2/SettlementServlet");
+		//}
+		//else {
+		//	System.out.println("精算失敗！");
+		//}
 	}
 
 }

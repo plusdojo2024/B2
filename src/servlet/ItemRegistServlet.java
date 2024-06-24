@@ -44,11 +44,7 @@ public class ItemRegistServlet extends HttpServlet {
 
 		ItemDAO itemDao = new ItemDAO();
 		List<Items> item_list = itemDao.list(houses_id);
-		if(item_list != null) {
-			System.out.println("item_listがnullでない");
-		}else {
-			System.out.println("item_listがnullである");
-		}
+		System.out.println("Items List: " + item_list);
 		request.setAttribute("itemsList", item_list);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/item.jsp");

@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskAutoMember {
-	String name;
+	String user_name;
 	int total_effort;
 	List<String> assignedList;
 
 	// コンストラクタ
-	public TaskAutoMember(String name) {
-		this.name = name;
+	public TaskAutoMember(String user_name) {
+		this.user_name = user_name;
 		this.total_effort = 0;
 		this.assignedList = new ArrayList<>();
 	}
@@ -26,8 +26,8 @@ public class TaskAutoMember {
 	}
 
 	// getter
-	public String getName() {
-		return name;
+	public String getUser_name() {
+		return user_name;
 	}
 
 

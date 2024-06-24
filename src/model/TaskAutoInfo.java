@@ -7,20 +7,19 @@ public class TaskAutoInfo {
 	String task_name;
 	int frequency;
 	int effort;
+	String day; //曜日
+	String user_name; //担当者名
 
 	// コンストラクタ
-	public TaskAutoInfo(String task_name, int frequency, int effort) {
+	public TaskAutoInfo(String task_name, int frequency, int effort, String day, String user_name) {
 		super();
 		this.task_name = task_name;
 		this.frequency = frequency;
 		this.effort = effort;
+		this.day = day;
+		this.user_name = user_name;
 	}
 
-	public TaskAutoInfo() {
-
-	}
-
-	// getter, setter
 	public String getTask_name() {
 		return task_name;
 	}
@@ -45,5 +44,19 @@ public class TaskAutoInfo {
 		this.effort = effort;
 	}
 
+	public String getDay() {
+		return day;
+	}
 
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 }

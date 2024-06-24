@@ -82,11 +82,7 @@ public class ItemDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
 				// SQL文を準備する
-<<<<<<< HEAD
 				String sql = "SELECT * FROM Items WHERE houses_id = ? ";
-=======
-				String sql = "SELECT * FROM Items WHERE house_id = ? ";
->>>>>>> f2b7b4d7aaa394b939c54df6301692029e4dca97
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる
 

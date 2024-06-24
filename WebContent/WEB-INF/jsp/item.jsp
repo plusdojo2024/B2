@@ -39,11 +39,8 @@
 
 			<div>
 				<h1>消耗品在庫一覧</h1>
-<<<<<<< HEAD
 				<form action = "/B2/ItemRegistServlet" method = "post">
-=======
 				<form action = "/B2/ItemListServlet" method = "post"></form>
->>>>>>> f2b7b4d7aaa394b939c54df6301692029e4dca97
 				<select id = "fillter" name = "filter">
 					<option value = "">絞り込み</option>
 					<optgroup label = "在庫状況">
@@ -66,17 +63,16 @@
 						<tr>
 							<td><input type = "checkbox" name = "item_choice" value = "chacked"></td>
 							<td >品目名</td>
-<<<<<<< HEAD
+
 							<td><input type = "text" name = "item_name" value="${item.item_name}"></td>
 							<td><input type = "button" name = 1 value = ✕ class="<c:if test='${item.status == 1}'>status_color1</c:if>"></td>
 							<td><input type = "button" name = 2 value = △ class="<c:if test='${item.status == 2}'>status_color2</c:if>"></td>
 							<td><input type = "button" name = 3 value = ◯ class="<c:if test='${item.status == 3}'>status_color3</c:if>"></td>
-=======
+
 							<td><input type = "text" name = "item_name"></td>
 							<td><input type = "button" name = 3 value = ◯></td>
 							<td><input type = "button" name = 2 value = △></td>
 							<td><input type = "button" name = 1 value = ✕></td>
->>>>>>> f2b7b4d7aaa394b939c54df6301692029e4dca97
 							<td></td>
 						</tr>
 						</c:forEach>

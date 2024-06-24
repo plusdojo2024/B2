@@ -42,14 +42,12 @@ public class ItemRegistServlet extends HttpServlet {
 			System.out.println("task_listがnullである");
 		}
 
-<<<<<<< HEAD
 		ItemDAO itemDao = new ItemDAO();
 		List<Items> item_list = itemDao.list(houses_id);
 		System.out.println("Items List: " + item_list);
+
 		request.setAttribute("itemsList", item_list);
-=======
 		request.setAttribute("taskDetailsList", task_list);
->>>>>>> f2b7b4d7aaa394b939c54df6301692029e4dca97
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/item.jsp");
 		dispatcher.forward(request, response);

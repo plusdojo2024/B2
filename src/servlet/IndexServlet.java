@@ -37,7 +37,7 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		// メンバーリスト
+		/*// メンバーリスト
 		// リクエストパラメーターを取得
 		request.setCharacterEncoding("UTF-8");
 		Houses houses = (Houses)session.getAttribute("Houses");
@@ -47,7 +47,7 @@ public class IndexServlet extends HttpServlet {
 		UserDAO userDao = new UserDAO();
 		List<Users> user_list = userDao.list(houses_id);
 
-		request.setAttribute("user_list", user_list);
+		request.setAttribute("user_list", user_list); */
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
 		dispatcher.forward(request, response);

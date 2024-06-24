@@ -135,7 +135,5 @@ public class TaskAutoServlet extends HttpServlet {
 			}
 		}
 
-
-
 	}
 }

@@ -13,7 +13,7 @@ import model.Items;
 public class ItemDAO {
 
 	// 引数itemで指定されたレコードを登録し、成功したらtrueを返す
-	public boolean insert(Items item) {
+	public boolean itemInsert(Items item) {
 		Connection conn = null;
 		boolean result = false;
 

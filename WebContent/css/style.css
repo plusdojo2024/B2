@@ -88,10 +88,12 @@ li {
 }
 
 input[type = "submit"] {
-	width: 100px;
+	width: 150px;
 	background-color: #559588;
 	border-radius: 100px;
 	color: #e8ffdd;
+	font-size:30px;
+	margin:0.7em;
 }
 
 input[type = "button"] {
@@ -111,13 +113,9 @@ table {
 	margin: auto;
 }
 
-footer {
+.footer {
 	background-color: #559588;
 	height: 80px;
 }
 
-header {
-	position:relative;
-	height: 50vh;
-	background: url(B2/img/puzzle-pieces-7696651_1280.jpg) center/cover;
-}
+

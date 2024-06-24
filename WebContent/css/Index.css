@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 .upmain {
-	display: flex;
 	justify-content:center; /* 中央寄せ */
 	margin-right: 20px;
 }
@@ -10,7 +9,7 @@
 
 }
 
-.家事管理 {
+.taskmanagement {
 	padding: 0em 3em;
 	margin: 1em ;
 	font-weight: bold;
@@ -39,6 +38,8 @@
 }
 
 .カレンダー {
+	flex-direction:colum;
+	justify-content:center;
 	padding: 0.1em 3em;
 	margin: 0.5em;
 	font-weight: bold;
@@ -46,9 +47,15 @@
     background: #FFF;
     border: solid 1px #5c5c5c;/*線*/
     border-radius: 50px;/*角の丸み*/
+    width:150px;
+    position:relative;
+	left:1000px;
+	top:-250px;
 }
 
 .掲示板 {
+	flex-direction:colum;
+	justify-content:center;
 	padding: 0.8em 3em;
 	margin: 3em 0;
 	font-weight: bold;
@@ -56,6 +63,10 @@
     background: #FFF;
     border: solid 1px #5c5c5c;/*線*/
     border-radius: 50px;/*角の丸み*/
+        width:150px;
+    position:relative;
+	left:1000px;
+	top:-250px;
 }
 .メンバー {
 	padding: 5em 4em;

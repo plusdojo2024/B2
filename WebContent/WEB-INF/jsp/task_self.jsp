@@ -16,16 +16,11 @@
 	<input type="submit"  onclick="location.href='/B2/TaskServlet'" value="登録">
 	<input type="submit"   onclick="location.href='/B2/TaskServlet'"value="振り分け">
 	</div>
-	<div class="radiobuttun">
-		<input type="radio" > <!--  name="contact" value="email" /-->
-		<label id="radiobuttun" for="contactChoice1">自動</label>
-
-		<input type="radio" ><!--  name="contact" value="phone" /-->
-		<label id="radiobuttun"for="contactChoice2">手動</label>
-	</div>
-
 	<div>
-	<table>
+	<input type="radio" name="radiobuttun" value="1" id="auto">自動
+	<input type="radio" name="radiobuttun" value="2" id="self">手動
+	</div>
+	<table id="task_self">
 		<tr>
 			<th>&nbsp;</th>
 			<th>月</th>
@@ -38,7 +33,7 @@
 		</tr>
 
 		<tr>
-			<td><button type="button">⊕</button></td>
+			<td>浅野</td>
 			<td><button type="button">⊕</button></td>
 			<td><button type="button">⊕</button></td>
 			<td><button type="button">⊕</button></td>

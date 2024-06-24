@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.radiobuttun{
+	writing-mode: horizontal-tb;
+}
+
+label {
+  writing-mode: horizontal-tb;
+}

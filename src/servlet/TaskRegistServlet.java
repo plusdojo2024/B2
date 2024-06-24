@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.TaskDAO;
+import model.Houses;
 import model.Task_Details;
 
 /**
@@ -49,10 +51,14 @@ public class TaskRegistServlet extends HttpServlet {
 		int frequency = Integer.parseInt(request.getParameter("frequency"));
 		int effort = Integer.parseInt(request.getParameter("effort"));
 
+		HttpSession session = request.getSession();
+		Houses houses = (Houses)session.getAttribute("Houses");
+		int houses_id = houses.getID();
+
 		// 登録処理を行う
 		TaskDAO taskDao = new TaskDAO();
 
-		if (taskDao.insert(new Task_Details(0,task_name, description, effort, frequency,0))) {
+		if (taskDao.taskInsert(new Task_Details(0,task_name, description, effort, frequency,houses_id))) {
 			System.out.println("登録成功!");
 		}
 		else {

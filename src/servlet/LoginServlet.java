@@ -51,8 +51,13 @@ public class LoginServlet extends HttpServlet {
 
 		//既に参加している家があるかどうかで遷移ページを変える
 		if(houses_id != null) {
-			Houses house = houseDao.selectById(houses_id);
-			session.setAttribute("Houses", house);
+			Houses houses = houseDao.selectById(houses_id);
+			session.setAttribute("Houses", houses);
+			if(houses != null) {
+				System.out.println("housesがnullでない");
+			}else {
+				System.out.println("housesがnullである");
+			}
 
 			Users userResult = userDao.selectLoginUser(email);
 			session.setAttribute("Users", userResult);

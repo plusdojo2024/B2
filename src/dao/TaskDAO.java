@@ -12,7 +12,7 @@ import model.Task_Details;
 
 public class TaskDAO {
 	//家事登録
-	public boolean insert(Task_Details task_detail) {
+	public boolean taskInsert(Task_Details task_detail) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -24,7 +24,7 @@ public class TaskDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2","sa", "");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO TASK_DETAILS VALUES (0, ?, ?, ?, ?, 0)";
+			String sql = "INSERT INTO TASK_DETAILS VALUES (null, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -47,6 +47,8 @@ public class TaskDAO {
 
 			// 頻度
 			pStmt.setInt(4, task_detail.getFrequency());
+
+			pStmt.setInt(5, task_detail.getHouses_id());
 
 
 			// SQL文を実行する

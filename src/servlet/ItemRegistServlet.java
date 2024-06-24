@@ -57,7 +57,7 @@ public class ItemRegistServlet extends HttpServlet {
 
 
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/house_login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/item.jsp");
 		dispatcher.forward(request, response);
 	}
 

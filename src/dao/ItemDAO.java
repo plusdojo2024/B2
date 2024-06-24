@@ -70,7 +70,7 @@ public class ItemDAO {
 		return result;
 	}
 	// ハウスIDで消耗品在庫リストを返す
-		public List<Items> list(int houses_id) {
+		public List<Items> list(int house_id) {
 			Connection conn = null;
 			List<Items> itemList = new ArrayList<Items>();
 
@@ -82,11 +82,15 @@ public class ItemDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
 				// SQL文を準備する
+<<<<<<< HEAD
 				String sql = "SELECT * FROM Items WHERE houses_id = ? ";
+=======
+				String sql = "SELECT * FROM Items WHERE house_id = ? ";
+>>>>>>> f2b7b4d7aaa394b939c54df6301692029e4dca97
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる
 
-				pStmt.setInt(1, houses_id);
+				pStmt.setInt(1, house_id);
 
 				// SQL文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();

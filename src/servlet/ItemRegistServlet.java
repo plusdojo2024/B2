@@ -20,7 +20,7 @@ import model.Task_Details;
 /**
  * Servlet implementation class ItemServlet
  */
-@WebServlet("/ItemRegistServlet")
+@WebServlet("/ItemServlet")
 public class ItemRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,17 +35,21 @@ public class ItemRegistServlet extends HttpServlet {
 
 		TaskDAO taskDao = new TaskDAO();
 		List<Task_Details> task_list = taskDao.list(houses_id);
+
 		if(task_list != null) {
 			System.out.println("task_listがnullでない");
 		}else {
 			System.out.println("task_listがnullである");
 		}
-		request.setAttribute("taskDetailsList", task_list);
 
+<<<<<<< HEAD
 		ItemDAO itemDao = new ItemDAO();
 		List<Items> item_list = itemDao.list(houses_id);
 		System.out.println("Items List: " + item_list);
 		request.setAttribute("itemsList", item_list);
+=======
+		request.setAttribute("taskDetailsList", task_list);
+>>>>>>> f2b7b4d7aaa394b939c54df6301692029e4dca97
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/item.jsp");
 		dispatcher.forward(request, response);

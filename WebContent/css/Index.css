@@ -1,35 +1,53 @@
 @charset "UTF-8";
 
+img {
+	position:relative;
+	top:-6px;
+}
+
 .upmain {
 	justify-content:center; /* 中央寄せ */
 	margin-right: 20px;
 }
 .upmain2 {
 	display: flex;
-
+	position:relative;
+	left:300px;
 }
 
-.taskmanagement {
-	padding: 0em 3em;
-	margin: 1em ;
+.upmain2name {
+	position:relative;
+	top:-95px;
+	font-weight: bold;
+}
+
+.centername {
+	  	 position:relative;
+	left:0px;
+	top:-20px;
+}
+
+.task_management{
+	padding: 35px;
+	margin: 0.5em ;
 	font-weight: bold;
 	color: #5c5c5c;/*文字色*/
     background: #FFF;
     border: solid 1px #5c5c5c;/*線*/
     border-radius: 50px;/*角の丸み*/
 }
-.支出管理 {
-	padding: 0.7em 3em;
-	margin: 1em ;
+.expense_management {
+	padding: 35px;
+	margin: 0.5em ;
 	font-weight: bold;
 	color: #5c5c5c;/*文字色*/
     background: #FFF;
     border: solid 1px #5c5c5c;/*線*/
     border-radius: 50px;/*角の丸み*/
 }
-.消耗品管理 {
-	padding: 0.8em 3em;
-	margin: 1em ;
+.item_management {
+	padding: 35px;
+	margin: 0.5em ;
 	font-weight: bold;
 	color: #5c5c5c;/*文字色*/
     background: #FFF;
@@ -37,9 +55,7 @@
     border-radius: 50px;/*角の丸み*/
 }
 
-.カレンダー {
-	flex-direction:colum;
-	justify-content:center;
+.calender {
 	padding: 0.1em 3em;
 	margin: 0.5em;
 	font-weight: bold;
@@ -47,29 +63,27 @@
     background: #FFF;
     border: solid 1px #5c5c5c;/*線*/
     border-radius: 50px;/*角の丸み*/
-    width:150px;
+    width:200px;
     position:relative;
-	left:1000px;
-	top:-250px;
+	left:880px;
+	top:-300px;
 }
 
-.掲示板 {
-	flex-direction:colum;
-	justify-content:center;
-	padding: 0.8em 3em;
-	margin: 3em 0;
+.board {
+	padding: 0.1em 3em;
+	margin: 1em ;
 	font-weight: bold;
 	color: #5c5c5c;/*文字色*/
     background: #FFF;
     border: solid 1px #5c5c5c;/*線*/
     border-radius: 50px;/*角の丸み*/
-        width:150px;
+    width:200px;
     position:relative;
-	left:1000px;
-	top:-250px;
+	left:869px;
+	top:-315px;
 }
-.メンバー {
-	padding: 5em 4em;
+.member {
+	padding: 2.5em 1em;
 	margin: 1em;
 	font-weight: bold;
 	color: #5c5c5c;/*文字色*/
@@ -77,17 +91,21 @@
     border: solid 1px #5c5c5c;/*線*/
     border-radius: 50px;/*角の丸み*/
 }
-.消耗品在庫一覧 {
-	padding: 0.8em 7em;
-	margin: 1;
+p#member{
+	position:relative;
+	top:-50px;
+}
+.item {
+	padding: 0.8em 2em;
+	margin: 0.3em;
 	font-weight: bold;
 	color: #5c5c5c;/*文字色*/
     background: #FFF;
     border: solid 1px #5c5c5c;/*線*/
     border-radius: 50px;/*角の丸み*/
 }
-.やることリスト {
-	padding: 0.8em 10em;
+.todo_list {
+	padding: 0.8em 5.5em;
 	margin: 1em;
 	font-weight: bold;
 	color: #5c5c5c;/*文字色*/
@@ -95,18 +113,18 @@
     border: solid 1px #5c5c5c;/*線*/
     border-radius: 50px;/*角の丸み*/
 }
-.全体の支出 {
-	padding: 0.8em 12em;
-	margin: 1em;
+.all_expense {
+	padding: 0.8em 6em;
+	margin: 0.5em;
 	font-weight: bold;
 	color: #5c5c5c;/*文字色*/
     background: #FFF;
     border: solid 1px #5c5c5c;/*線*/
     border-radius: 50px;/*角の丸み*/
 }
-.今日のイベント {
-	padding: 0.8em 12em;
-	margin: 1em;
+.event {
+	padding: 0.8em 6em;
+	margin: 0.5em;
 	font-weight: bold;
 	color: #5c5c5c;/*文字色*/
     background: #FFF;
@@ -117,9 +135,19 @@
 .centermain {
   display: flex;
   justify-content: center; /* 中央寄せ */
+  	 position:relative;
+	left:15px;
+	top:-350px;
 }
 
 .downmain {
   display: flex;
   justify-content: center; /* 中央寄せ */
+   	 position:relative;
+	left:15px;
+	top:-355px;
+}
+.downname {
+	position:relative;
+	top:-20px;
 }

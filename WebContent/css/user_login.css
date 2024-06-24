@@ -1,7 +1,0 @@
-@charset "UTF-8";
-
-input[type = "password"] {
-	border-radius: 20px;
-	width: 200px;
-	height: 30px;
-}

@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>新規家登録・参加</title>
-<link rel="stylecss" href="css/style.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/house_login.css">
 </head>
 
 <body>

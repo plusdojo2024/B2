@@ -8,7 +8,7 @@ header {
   align-items: center;
 
 /*ヘッダー固定*/
-  position: sticky;
+  position: fixed;
   z-index: 999;
   top: 0;
   left: 0;
@@ -59,7 +59,7 @@ a {
 }
 .image p{
   position: absolute;/*重ねたい子要素にabsolute*/
-  top:50%;
+  top:65%;
   left: 50%;
  -ms-transform: translate(-50%,-50%);/*ベンダープレフィックス*/
   -webkit-transform: translate(-50%,-50%);/*ベンダープレフィックス*/

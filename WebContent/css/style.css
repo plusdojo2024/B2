@@ -6,32 +6,18 @@ body{
 	text-align: center;
 	font-size: 25px;
 	color: #5c5c5c;
-
 }
 
-
-header {
-  display: flex;
-  width: 100%;
-  height: 150px;
-  color: #e8ffdd;
-  background-color: #559588;
-  align-items: center;
-
-/*ヘッダー固定*/
-  position: sticky;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  padding: 20px 40px;
-  box-sizing: border-box;
+.header {
+	margin-top: 0;
+	text-align: right;
+	background-color: #559588;
+	height: 60px;
 }
-
 
 .title {
-	 margin-right: auto;
-	 text-decoration: none;
-	 color: #e8ffdd;
+	margin-top: 0;
+	text-align: left;
 	}
 
 .three {
@@ -40,11 +26,7 @@ header {
 }
 
 .hamburger {
-	position: fixed;
-	top: 10px;
-	right: 10px;
-
-
+	top: 0px;
 }
 
 label {
@@ -78,10 +60,6 @@ nav {
 	width: 90%;
 	height: 100%;
 	transform: translateX(-120%);
-	text-align:right;
-	background-clip: text;
-	background-color:white;
-	padding: 10px 5px 10px 5px;
 }
 
 ul {
@@ -91,6 +69,7 @@ ul {
 li {
 	list-style: none;
 }
+
 
 
 #check:checked ~ nav {

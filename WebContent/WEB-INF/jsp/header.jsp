@@ -11,9 +11,9 @@
 
 <body>
 	<header class = "header">
-		<div>
-			<a href="/B2/IndexServlet" style="text-decoration:none;">
-			<h1 class = "title">FORESE</h1>
+		<div class = "title">
+			<a>
+			<h1>FORESE</h1>
 			</a>
 		</div>
 		<div class = "three">
@@ -42,7 +42,7 @@
 					<li>支出管理
 					<li><a href = "/B2/ReceiptServlet">レシート登録/精算</a>
 					<li><a href = "/B2/SettlementServlet">支出一覧</a>
-					<li><a href = "/B2/ItemServlet">在庫管理（在庫登録/在庫一覧）</a>
+					<li><a href = "/B2/ItemRegistServlet">在庫管理（在庫登録/在庫一覧）</a>
 					<li><a href = "/B2/ScheduleServlet">カレンダー</a>
 					<li><a href = "/B2/TodoServlet">やることリスト</a>
 					<li><a href = "/B2/MyInfoServlet">プロフィール</a>

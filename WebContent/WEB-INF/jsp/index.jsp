@@ -17,56 +17,56 @@
 	<main>
 		<div class="upmain">
 			<div class="upmain2">
-				<div class="taskmanagement">
-
-					<a href="/B2/TaskServlet"><img src="img/task.png">
-					<p>家事管理</p></a>
+				<div>
+					<img class="task_management" src="img/task.png"><br>
+					<p class="upmain2name">家事管理</p>
+					<a href="/B2/TaskServlet"></a>
 				</div>
-				<div class="支出管理">
-					<img src="img/expense.png"><br>
-					<p>支出管理</p>
+				<div>
+					<img class="expense_management" src="img/expense.png"><br>
+					<p class="upmain2name">支出管理</p>
 					<a href="/B2/SettlementServlet"></a>
 				</div>
-				<div class="消耗品管理">
-					<img src="img/item.png"><br>
-					<p>消耗品管理</p>
+				<div>
+					<img class="item_management" src="img/item.png"><br>
+					<p class="upmain2name">消耗品管理</p>
 					<a href="/B2/ItemServlet"></a>
 				</div>
 			</div>
-			<div class="カレンダー">
+			<div class="calender">
 				<p>カレンダー</p>
 				<a href="/B2/ScheduleServlet"></a>
 			</div>
-			<div class="掲示板">
+			<div class="board">
 				<p>掲示板</p>
 				<a href="/B2/BoardServlet"></a>
 			</div>
 		</div>
 		<div class="centermain">
-			<div class="メンバー">
-				<p>メンバー</p><br>
+			<div class="member">
+				<p id="member">メンバー</p><br>
 				<c:forEach var="e" items="${user_list}" >
 				<ul>
 					<li>${e.user_name}</li>
 				</ul>
 				</c:forEach>
 			</div>
-			<div class="消耗品在庫一覧">
-				<p>消耗品在庫一覧</p><br>
+			<div class="item">
+				<p class="centername">消耗品在庫一覧</p><br>
 				<a href="/B2/ItemServlet"></a>
 			</div>
-			<div class="やることリスト">
-				<p>やることリスト</p><br>
+			<div class="todo_list">
+				<p class="centername">やることリスト</p><br>
 				<a href="/B2/TodoServlet"></a>
 			</div>
 		</div>
 		<div class="downmain">
-			<div class="全体の支出">
-				<p>全体の支出</p><br>
+			<div class="all_expense">
+				<p class="downname">全体の支出</p><br>
 				<a href="/B2/ExpenseServlet"></a>
 			</div>
-			<div class="今日のイベント">
-				<p>今日のイベント</p><br>
+			<div class="event">
+				<p class="downname">今日のイベント</p><br>
 				<a href="/B2/ScheduleServlet"></a>
 			</div>
 		</div>

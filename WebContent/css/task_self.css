@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-.radiobuttun{
-	writing-mode: horizontal-tb;
-}
+table#task_self{
 
-label {
-  writing-mode: horizontal-tb;
 }

@@ -11,25 +11,25 @@
 <body>
 	<h1>やることリスト</h1>
 	<div>
-		個人
+		<h2>個人</h2>
 		<div>
-			家事<br>
+			<h3>家事</h3><br>
 			<input type="checkbox" name="">洗濯
 		</div>
 		<div>
-			在庫チェック<br>
+			<h3>在庫チェック</h3><br>
 			<input type="checkbox" name="">洗剤
 		</div>
 		<input type="submit" value="更新">
 	</div>
 	<div>
-		全体
+		<h2>全体</h2>
 		<div>
-			家事<br>
+			<h3>家事</h3><br>
 			<input type="checkbox" name="">高橋：洗濯
 		</div>
 		<div>
-			在庫チェック<br>
+			<h3>在庫チェック</h3><br>
 			<input type="checkbox" name="">高橋：洗剤
 		</div>
 	</div>

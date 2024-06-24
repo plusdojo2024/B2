@@ -100,7 +100,13 @@ table {
 	margin: auto;
 }
 
-.footer {
+footer {
 	background-color: #559588;
 	height: 80px;
+}
+
+header {
+	position:relative;
+	height: 50vh;
+	background: url(B2/img/puzzle-pieces-7696651_1280.jpg) center/cover;
 }

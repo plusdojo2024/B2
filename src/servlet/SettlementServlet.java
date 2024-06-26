@@ -84,6 +84,7 @@ public class SettlementServlet extends HttpServlet {
 		// セッションスコープでusers_idをとってくる
 //		Users users = (Users)session.getAttribute("Users");
 
+
 		// レシートを精算済みにする＋精算日の追加
 		ExpenseDAO expenseDao = new ExpenseDAO();
 		if (request.getParameter("submit").equals("精算")) {
@@ -115,7 +116,11 @@ public class SettlementServlet extends HttpServlet {
 			}
 		}
 
+		// レシートの一覧を表示
+		ExpenseDAO eDao = new ExpenseDAO();
+		List<Settlements> ReceiptList= eDao.list(houses_id);
 
+		request.setAttribute("receiptList",ReceiptList);
 		// 結果フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/settlement.jsp");
 		dispatcher.forward(request, response);

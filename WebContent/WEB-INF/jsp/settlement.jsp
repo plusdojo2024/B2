@@ -60,17 +60,19 @@
 
 
 			</c:forEach> --%>
-			<h1>精算</h1>
-			<form action="/B2/SettlementServlet" method="post">
+			<h1>未精算一覧</h1>
 				<c:forEach var="e" items="${receiptList }">
-
+					<form action="/B2/SettlementServlet" method="post">
+					<input type="hidden" name="settlement_id" value="${e.ID }">
+					<input type="hidden" name="settlement_date" value="${e.settlement_date }">
 					<table>
 						<!-- ここ修正するかも（table必要なのか？） -->
 						<tr>
 							<td><p>${e.receipt_name }</p></td>
 							<td><p>${e.receipt_amount }円</p></td>
 							<td><p>${e.expense_date }</p></td>
-							<td><p>
+<%-- 							<td><p>登録者：${user_name}</p></td>--%>
+							<%-- <td><p>
 							<c:if test="${e.settlement_finish  == false}">
 							未精算
 							</c:if>
@@ -78,13 +80,13 @@
 							精算済み
 							</c:if>
 							</p></td>
-							<td><p>${e.settlement_date }</p></td>
-							<td><input type="submit" value="精算"><input type="submit" value="削除"></td>
+							<td><p>${e.settlement_date }</p></td> --%>
+							<td><input type="submit" name="submit" value="精算"><input type="submit" name="submit"  value="削除"></td>
 						</tr>
 					</table>
+					</form>
 				</c:forEach>
-				<input type="submit" name="all" value="まとめて精算">
-			</form>
+				<input type="submit" name="submit" value="まとめて精算">
 		</div>
 	</main>
 </body>

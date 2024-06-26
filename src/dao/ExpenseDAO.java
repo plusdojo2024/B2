@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +20,6 @@ public class ExpenseDAO {
 	public boolean insert(Settlements settlement) {
 		Connection conn = null;
 		boolean result = false;
-		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
-		String now_date_string = dateformat.format(LocalDate.now());
-
 
 		try {
 			// JDBCドライバを読み込む
@@ -35,7 +30,7 @@ public class ExpenseDAO {
 
 			// SQL文を準備する
 			String sql = "INSERT INTO SETTLEMENTS (id,users_id,receipt_name,receipt_amount,description,expense_date,settlement_finish,settlement_approval,settlement_date,houses_id)"
-					+ "                      VALUES (NULL, ?,      ?,           ?,              ?,      ?,          FALSE,                   FALSE,                  ?,          ?)";
+					+ "                      VALUES (NULL, ?,      ?,           ?,              ?, CURRENT_DATE,FALSE,FALSE,null,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -57,17 +52,9 @@ public class ExpenseDAO {
 			else {
 				pStmt.setString(4, "（未設定）");
 			}
-			// 支払日
-			pStmt.setString(5, now_date_string);
-
-			// 精算済みフラグ　初期値FALSE
-			// 承認済みフラグ　初期値FALSE
-
-			// 精算日
-			pStmt.setString(6, "");
 
 			// ハウスID
-			pStmt.setInt(7, settlement.getHouses_id());
+			pStmt.setInt(5, settlement.getHouses_id());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -95,7 +82,7 @@ public class ExpenseDAO {
 	return result;
 	}
 
-	// ハウスIDでレシートリストを返す
+	// ハウスIDでレシートリストを返す(未精算の)
 	public List<Settlements> list(int houses_id) {
 		Connection conn = null;
 		List<Settlements> ReceiptList = new ArrayList<Settlements>();
@@ -108,7 +95,7 @@ public class ExpenseDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
 			//SQL文を準備する
-			String sql = "SELECT * FROM SETTLEMENTS WHERE houses_id = ?";
+			String sql = "SELECT * FROM SETTLEMENTS WHERE houses_id = ? AND settlement_finish = false";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
@@ -164,8 +151,6 @@ public class ExpenseDAO {
 	public boolean update(int houses_id, int settlement_id, String settlement_date){
 		Connection conn = null;
 		boolean result = false;
-		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
-		String now_date_string = dateformat.format(LocalDate.now());
 
 	try {
 			// JDBCドライバを読み込む
@@ -174,12 +159,11 @@ public class ExpenseDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B2", "sa", "");
 
-			String sql = "UPDATE SETTLEMENTS SET SETTLEMENT_FINISH=TRUE, SETTLEMENT_DATE=? WHERE HOUSES_ID=? AND ID=?";
+			String sql = "UPDATE SETTLEMENTS SET SETTLEMENT_FINISH=TRUE, SETTLEMENT_DATE=CURRENT_DATE WHERE HOUSES_ID=? AND ID=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			pStmt.setString(1, now_date_string);
-			pStmt.setInt(2, houses_id);
-			pStmt.setInt(3, settlement_id);
+			pStmt.setInt(1, houses_id);
+			pStmt.setInt(2, settlement_id);
 
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {

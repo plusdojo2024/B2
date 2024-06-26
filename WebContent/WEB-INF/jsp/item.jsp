@@ -23,7 +23,7 @@
 					<tr>
 						<td>家事関連名</td>
 						<td>
-						<select>
+						<select name="task_details_id">
 						<c:forEach var="task" items="${taskDetailsList}">
 							<option value="${task.ID}">${task.task_name}</option>
 						</c:forEach>
@@ -40,7 +40,6 @@
 			<div>
 				<h1>消耗品在庫一覧</h1>
 				<form action = "/B2/ItemRegistServlet" method = "post">
-				<form action = "/B2/ItemListServlet" method = "post"></form>
 				<select id = "fillter" name = "filter">
 					<option value = "">絞り込み</option>
 					<optgroup label = "在庫状況">
@@ -56,30 +55,24 @@
 					</optgroup>
 				</select>
 				<input type = "submit" value = "絞り込み">
+				</form>
 
-				<form action = "/B2/ItemRegistServlet" method = "post">
+
 					<table>
-						<c:forEach var="item" items="${itemsList}">
 						<tr>
 							<td><input type = "checkbox" name = "item_choice" value = "chacked"></td>
 							<td >品目名</td>
-
+							<c:forEach var="item" items="${itemsList}">
 							<td><input type = "text" name = "item_name" value="${item.item_name}"></td>
 							<td><input type = "button" name = 1 value = ✕ class="<c:if test='${item.status == 1}'>status_color1</c:if>"></td>
 							<td><input type = "button" name = 2 value = △ class="<c:if test='${item.status == 2}'>status_color2</c:if>"></td>
 							<td><input type = "button" name = 3 value = ◯ class="<c:if test='${item.status == 3}'>status_color3</c:if>"></td>
-
-							<td><input type = "text" name = "item_name"></td>
-							<td><input type = "button" name = 3 value = ◯></td>
-							<td><input type = "button" name = 2 value = △></td>
-							<td><input type = "button" name = 1 value = ✕></td>
 							<td></td>
+							</c:forEach>
 						</tr>
-						</c:forEach>
 					</table>
 					<input type = "submit" value = "更新">
 					<input type = "submit" value = "削除">
-				</form>
 			</div>
 		</div>
 	</main>

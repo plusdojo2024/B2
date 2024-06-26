@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import dao.ExpenseDAO;
 import model.Houses;
 import model.Settlements;
-import model.Users;
 
 /**
  * Servlet implementation class SettlementServlet
@@ -39,22 +38,24 @@ public class SettlementServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
-		String receipt_name = request.getParameter("receipt_name");
-		int receipt_amount = Integer.parseInt(request.getParameter("receipt_amount"));
-		String description = request.getParameter("description");
-		String expense_date = request.getParameter("expense_date");
-		String settlement_date = request.getParameter("settlement_date");
+//		String receipt_name = request.getParameter("receipt_name");
+//		int receipt_amount = Integer.parseInt(request.getParameter("receipt_amount"));
+//		String description = request.getParameter("description");
+//		String expense_date = request.getParameter("expense_date");
+//		String settlement_date = request.getParameter("settlement_date");
 
 		HttpSession session = request.getSession();
 		 //セッションスコープでhouses_idをとってくる
 		Houses houses = (Houses)session.getAttribute("Houses");
 		int houses_id = houses.getID();
 		// セッションスコープでusers_idをとってくる
-		Users users = (Users)session.getAttribute("Users");
+//		Users users = (Users)session.getAttribute("Users");
 
 		// レシートの一覧を表示
 		ExpenseDAO eDao = new ExpenseDAO();
 		List<Settlements> ReceiptList= eDao.list(houses_id);
+
+		request.setAttribute("receiptList",ReceiptList);
 		// レシート登録・精算画面（settlement.jsp）にフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/settlement.jsp");
 		dispatcher.forward(request, response);
@@ -69,26 +70,25 @@ public class SettlementServlet extends HttpServlet {
 
 		// リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
-		String receipt_name = request.getParameter("receipt_name");
-		int receipt_amount = Integer.parseInt(request.getParameter("receipt_amount"));
-		String description = request.getParameter("description");
-		String expense_date = request.getParameter("expense_date");
+//		String receipt_name = request.getParameter("receipt_name");
+//		int receipt_amount = Integer.parseInt(request.getParameter("receipt_amount"));
+//		String description = request.getParameter("description");
+//		String expense_date = request.getParameter("expense_date");
 		int settlement_id = Integer.parseInt(request.getParameter("settlement_id"));
 		String settlement_date = request.getParameter("settlement_date");
 
-		HttpSession session = request.getSession();
+		//HttpSession session = request.getSession();
 		// セッションスコープでhouses_idをとってくる
 		Houses houses = (Houses)session.getAttribute("Houses");
 		int houses_id = houses.getID();
 		// セッションスコープでusers_idをとってくる
-		Users users = (Users)session.getAttribute("Users");
+//		Users users = (Users)session.getAttribute("Users");
 
 		// レシートを精算済みにする＋精算日の追加
 		ExpenseDAO expenseDao = new ExpenseDAO();
 		if (request.getParameter("submit").equals("精算")) {
 			if (expenseDao.update(houses_id, settlement_id, settlement_date)) {
 				System.out.println("精算成功！");
-				response.sendRedirect("/B2/SettlementServlet");
 			}
 			else {
 				System.out.println("精算失敗！");
@@ -109,7 +109,6 @@ public class SettlementServlet extends HttpServlet {
 		if (request.getParameter("submit").equals("削除")) {
 			if (expenseDao.delete(houses_id, settlement_id)) {
 				System.out.println("削除成功！");
-				response.sendRedirect("/B2/SettlementServlet");
 			}
 			else {
 				System.out.println("削除失敗！");

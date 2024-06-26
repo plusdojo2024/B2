@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>新規家登録・参加</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>

@@ -4,3 +4,6 @@ td {
 	width: 100px;
 	height: 60px;
 }
+input[type=checkbox] {
+  transform: scale(1.5);
+}

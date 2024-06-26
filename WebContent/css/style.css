@@ -4,7 +4,7 @@ body{
 	margin: 0;
 	background-color: #f1f8e8;
 	text-align: center;
-	font-size: 25px;
+	font-size: 20px;
 	color: #5c5c5c;
 }
 
@@ -62,25 +62,7 @@ label {
 	background-color:white;
 	padding: 10px 5px 10px 5px;
 }
-/* いらない
-.menu-content{
-	position:fixed;
-	top: 50px;
-	right: 0;
-	z-index: 99;
-	width: 90%;
-	height: 100%;
-	transform: translateX(-120%);
-}
 
-ul {
-	padding-left: 0;
-}
-
-li {
-	list-style: none;
-}
-*/
 .menu-btn {
     position: fixed;
     top: 10px;
@@ -218,4 +200,7 @@ table {
 	height: 80px;
 }
 
+input[type=checkbox] {
+  transform: scale(1.5);
+}
 

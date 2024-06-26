@@ -13,7 +13,7 @@
   <main>
 	<div>
 	<input type="submit"  onclick="location.href='/B2/TaskServlet'" value="分担一覧">
-	<input type="submit"  onclick="location.href='/B2/TaskServlet'" value="登録">
+	<input type="submit"  onclick="location.href='/B2/TaskRegistServlet'" value="登録">
 	<input type="submit"   onclick="location.href='/B2/TaskServlet'"value="振り分け">
 	</div>
 	<div>

@@ -14,9 +14,9 @@
 			<!--  a href = "/B2/TaskServlet">分担一覧</a>
 			<a href = "/B2/TaskServlet">登録</a>
 			<a href = "/B2/TaskServlet">振り分け</a -->
-			<input type="submit" onclick="location.href='/B2/TaskServlet" value="分担一覧">
-			<input type="submit" onclick="location.href='/B2/TaskServlet" value="登録">
-			<input type="submit" onclick="location.href='/B2/TaskServlet" value="振り分け">
+			<input type="submit" onclick="location.href='/B2/TaskServlet'" value="分担一覧">
+			<input type="submit" onclick="location.href='/B2/TaskRegistServlet'" value="登録">
+			<input type="submit" onclick="location.href='/B2/TaskServlet'" value="振り分け">
 		</div>
 
 		<div class="task_regist">

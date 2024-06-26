@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.table_auto{
+	padding: 0.8em 4em;
+	margin: 1em;
+	font-weight: bold;
+	color: #5c5c5c;/*文字色*/
+    background: #FFF;
+    border: solid 1px #7AA306;/*線*/
+    border-radius: 50px;/*角の丸み*/
+    width:600px;
+    position:relative;
+	left:330px;
+}
+
+table th{
+	background: #E8FFDD;
+	border-radius: 50%;
+	width: 100px;
+	height: 20px;
+	line-height: 50px;
+	margin:10px;
+	border: 1px#7AA306 solid;
+}
+
+table th#nbsp{
+	background: #ffff;
+}
+
+table td {
+ 	border: 1px#7AA306 solid;
+}
+.member_name{
+	font-size:15px;
+	color:#5c5c5c;
+}
+
+.dayname{
+	color:#559588;
+	border-top:none;
+	font-size:22px;
+}

@@ -138,6 +138,7 @@ input[type = "password"] {
 
 table {
 	margin: auto;
+	border-collapse: collapse;
 }
 
 .footer {

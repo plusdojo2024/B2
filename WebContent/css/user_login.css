@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+body{
+	margin: 0;
+	background-color: #f1f8e8;
+	text-align: center;
+	font-size: 25px;
+	color: #5c5c5c;
+}
+
+header {
+	 display: flex;
+ 	 width: 100%;
+ 	 height: 150px;
+ 	 color: #e8ffdd;
+ 	 background-color: #559588;
+ 	 align-items: center;
+
+
+	/*ヘッダー固定*/
+ 	 position: fixed;
+ 	 z-index: 999;
+ 	 top: 0;
+ 	 left: 0;
+ 	 padding: 20px 40px;
+ 	 box-sizing: border-box;
+	 margin-top: 0;
+	 text-align: right;
+	 background-color: #559588;
+	 height: 150px;
+}
+
+header a,
+header a:visited {
+	text-decoration:none;
+	color: #e8ffdd;
+}
+nav a,
+nav a:visited{
+	color:#D46934;
+}
+
+
+.three {
+	justify-content: flex-end;
+	display: flex;
+}
+
+.hamburger {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+
+}
+
+label {
+	display: inline-block;
+	width: 25px;
+	height: 22px;
+	text-align:right;
+	background-clip: text;
+	background-color:white;
+	padding: 10px 5px 10px 5px;
+}
+
+span,span::before,span::after {
+	display: block;
+	height: 3px;
+	width: 25px;
+	background-color: #000000;
+	content: "";
+	position: absolute;
+}
+
+span::before {
+	top: 8px;
+}
+
+span::after {
+	top: 16px;
+}
+
+nav {
+	position:fixed;
+	top: 50px;
+	right: 0;
+	z-index: 99;
+	width: 90%;
+	height: 100%;
+	transform: translateX(-120%);
+}
+
+ul {
+	padding-left: 0;
+}
+
+li {
+	list-style: none;
+}
+
+
+
+#check:checked ~ nav {
+	transform: translateX(-10%);
+}
+
+main {
+  margin-top: 150px; /* 上の空白を150pxに指定 */
+}
+
+input[type = "submit"] {
+	width: 200px;
+	background-color: #559588;
+	border-radius: 100px;
+	color: #e8ffdd;
+	font-size:30px;
+	margin:0.7em;
+}
+
+input[type = "button"] {
+	width: 40px;
+	background-color: #ffffff;
+	border-radius: 100px;
+}
+
+input[type = "text"] {
+	border-radius: 20px;
+	width: 200px;
+	height: 30px;
+}
+
+input[type = "password"] {
+	border-radius: 20px;
+	width: 200px;
+	height: 30px;
+}
+
+
+table {
+	margin: auto;
+}
+
+.footer {
+	background-color: #559588;
+	height: 80px;
+}

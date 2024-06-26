@@ -5,10 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>新規家登録・参加</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/user_login.css">
 </head>
 
 <body>
+  <header>
+  	 <h1 class="title">FORESE</h1>
+
+  </header>
 	<main>
 		<div>
  			<h1>新規家登録</h1>

@@ -75,7 +75,7 @@ public class SettlementServlet extends HttpServlet {
 //		String description = request.getParameter("description");
 //		String expense_date = request.getParameter("expense_date");
 		int settlement_id = Integer.parseInt(request.getParameter("settlement_id"));
-		String settlement_date = request.getParameter("settlement_date");
+//		String settlement_date = request.getParameter("settlement_date");
 
 		//HttpSession session = request.getSession();
 		// セッションスコープでhouses_idをとってくる
@@ -87,7 +87,7 @@ public class SettlementServlet extends HttpServlet {
 		// レシートを精算済みにする＋精算日の追加
 		ExpenseDAO expenseDao = new ExpenseDAO();
 		if (request.getParameter("submit").equals("精算")) {
-			if (expenseDao.update(houses_id, settlement_id, settlement_date)) {
+			if (expenseDao.update_seisan(houses_id, settlement_id)) {
 				System.out.println("精算成功！");
 			}
 			else {
@@ -115,6 +115,13 @@ public class SettlementServlet extends HttpServlet {
 			}
 		}
 
+
+
+		// レシートの一覧を表示
+		ExpenseDAO eDao = new ExpenseDAO();
+		List<Settlements> ReceiptList= eDao.list(houses_id);
+
+		request.setAttribute("receiptList",ReceiptList);
 
 		// 結果フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/settlement.jsp");

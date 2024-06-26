@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,6 +36,17 @@ public class ReceiptServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+		 //セッションスコープでhouses_idをとってくる
+		Houses houses = (Houses)session.getAttribute("Houses");
+		int houses_id = houses.getID();
+		// レシートの一覧を表示
+		ExpenseDAO eDao = new ExpenseDAO();
+		List<Settlements> ReceiptList= eDao.list(houses_id);
+
+		request.setAttribute("receiptList",ReceiptList);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/settlement.jsp");
 		dispatcher.forward(request, response);
 	}

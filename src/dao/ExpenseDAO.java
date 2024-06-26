@@ -12,7 +12,7 @@ import model.Settlements;
 
 
 // テーブルはSettlementにExpensesを合体させた
-// なのでテーブルの名前はSettlement
+// なのでテーブルの名前はSettlements
 // DAOの名前は変えるとエラーになるからそのままExpensesDAOのまま
 public class ExpenseDAO {
 
@@ -148,7 +148,7 @@ public class ExpenseDAO {
 	}
 
 	//精算ボタンクリックされたらExpenseDAOを精算済みにする＋精算日を追加
-	public boolean update(int houses_id, int settlement_id, String settlement_date){
+	public boolean update_seisan(int houses_id, int settlement_id){
 		Connection conn = null;
 		boolean result = false;
 
@@ -168,6 +168,8 @@ public class ExpenseDAO {
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {
 					result = true;
+				}else {
+					System.out.println("false");
 				}
 			}
 			catch (SQLException e) {

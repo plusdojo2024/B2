@@ -12,7 +12,7 @@
 <body>
 	<header class = "header">
 		<div class = "title">
-			<a>
+			<a href = "/B2/IndexServlet">
 			<h1>FORESE</h1>
 			</a>
 		</div>

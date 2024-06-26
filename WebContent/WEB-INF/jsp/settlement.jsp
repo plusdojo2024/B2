@@ -71,7 +71,7 @@
 							<td><p>${e.receipt_name }</p></td>
 							<td><p>${e.receipt_amount }円</p></td>
 							<td><p>${e.expense_date }</p></td>
-<%-- 							<td><p>登録者：${user_name}</p></td>--%>
+							<%-- <td><p>登録者：${user_name}</p></td> --%>
 							<%-- <td><p>
 							<c:if test="${e.settlement_finish  == false}">
 							未精算

@@ -116,7 +116,11 @@ public class SettlementServlet extends HttpServlet {
 			}
 		}
 
+		// レシートの一覧を表示
+		ExpenseDAO eDao = new ExpenseDAO();
+		List<Settlements> ReceiptList= eDao.list(houses_id);
 
+		request.setAttribute("receiptList",ReceiptList);
 		// 結果フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/settlement.jsp");
 		dispatcher.forward(request, response);

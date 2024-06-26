@@ -1,58 +1,17 @@
-package servlet;
-
-import java.io.IOException;
+package model;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import dao.TaskAutoListDAO;
-import dao.TaskDAO;
-import model.Houses;
-import model.TaskAutoBox;
-import model.TaskNameFreqEffo;
-import model.Task_Details;
-import model.UserHp;
 
-/**
- * Servlet implementation class TaskAutoServlet
- */
-@WebServlet("/TaskAutoServlet")
-public class TaskAutoServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TaskAutoServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+public class TaskAutoBoxTest {
+	public static void main(String[] args) {
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/task_auto.jsp");
-		dispatcher.forward(request, response);
-	}
+		int houses_id = 1;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
 
-		request.setCharacterEncoding("UTF-8");
-		Houses houses = (Houses)session.getAttribute("Houses");
-		int houses_id = houses.getID();
+
 
 		//task_detailsテーブルでhouses_idが「1」のfrequencyの合計を計算するTaskAutoListDAOのメソッド
 		TaskAutoListDAO talDAO = new TaskAutoListDAO();
@@ -141,28 +100,6 @@ public class TaskAutoServlet extends HttpServlet {
 
 
 
-		System.out.println(TaskAutoList);
-
-
-	// あとは、TaskAutoListをスコープに入れて、中のTaskAutoBoxのdayと、task_nameに従って、user_nameを配置
-		request.setAttribute("TaskAutoList", TaskAutoList);
-
-		TaskDAO taskDao = new TaskDAO();
-		List<Task_Details> task_list = taskDao.list(houses_id);
-		request.setAttribute("task_list", task_list);
-
-		for (TaskAutoBox e: TaskAutoList) {
-			System.out.println(e.getDay());
-			System.out.println(e.getUser_name());
-			System.out.println(e.getTask_name());
-		}
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/task_auto.jsp");
-		dispatcher.forward(request, response);
-
-
-
-
+		System.out.println("hello");
 	}
-
 }

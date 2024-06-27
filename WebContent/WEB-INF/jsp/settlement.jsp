@@ -71,7 +71,9 @@
 							<td><p>${e.receipt_name }</p></td>
 							<td><p>${e.receipt_amount }円</p></td>
 							<td><p>${e.expense_date }</p></td>
-							<%-- <td><p>登録者：${user_name}</p></td> --%>
+					<%-- 		登録者：<c:if test="${e.users_id == u.ID}">
+							${ u.user_name }
+							</c:if>> --%>
 							<%-- <td><p>
 							<c:if test="${e.settlement_finish  == false}">
 							未精算
@@ -85,6 +87,7 @@
 						</tr>
 					</table>
 					</form>
+		<%-- 		</c:forEach> --%>
 				</c:forEach>
 				<input type="submit" name="submit" value="まとめて精算">
 		</div>

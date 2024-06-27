@@ -17,7 +17,7 @@ img {
 
 .upmain2name {
 	position:relative;
-	top:-95px;
+	top:-85px;
 	font-weight: bold;
 }
 
@@ -69,7 +69,7 @@ img {
     width:200px;
     position:relative;
 	left:880px;
-	top:-300px;
+	top:-270px;
 }
 
 .board {
@@ -83,10 +83,10 @@ img {
     width:200px;
     position:relative;
 	left:869px;
-	top:-315px;
+	top:-280px;
 }
 .member {
-	padding: 2.5em 1em;
+	padding: 2.5em 2em;
 	margin: 1em;
 	font-weight: bold;
 	color: #5c5c5c;/*文字色*/
@@ -108,7 +108,7 @@ p#member{
     border-radius: 50px;/*角の丸み*/
 }
 .todo_list {
-	padding: 0.8em 5.5em;
+	padding: 0.8em 8em;
 	margin: 1em;
 	font-weight: bold;
 	color: #5c5c5c;/*文字色*/
@@ -117,7 +117,7 @@ p#member{
     border-radius: 50px;/*角の丸み*/
 }
 .all_expense {
-	padding: 0.8em 6em;
+	padding: 0.8em 8em;
 	margin: 0.5em;
 	font-weight: bold;
 	color: #5c5c5c;/*文字色*/
@@ -126,7 +126,7 @@ p#member{
     border-radius: 50px;/*角の丸み*/
 }
 .event {
-	padding: 0.8em 6em;
+	padding: 0.8em 8em;
 	margin: 0.5em;
 	font-weight: bold;
 	color: #5c5c5c;/*文字色*/
@@ -139,8 +139,8 @@ p#member{
   display: flex;
   justify-content: center; /* 中央寄せ */
   position:relative;
-	left:15px;
-	top:-350px;
+	left:10px;
+	top:-290px;
 }
 
 .downmain {
@@ -148,7 +148,7 @@ p#member{
   justify-content: center; /* 中央寄せ */
    	 position:relative;
 	left:15px;
-	top:-355px;
+	top:-290px;
 }
 .downname {
 	position:relative;

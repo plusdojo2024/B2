@@ -10,10 +10,10 @@
 </head>
 
 <body>
-	<!--  div>
+	<div>
 		<p>USER ID: ${Users.ID}</p>
 		<p>HOUSE ID: ${Houses.house_hash}</p>
-	</div -->
+	</div>
 	<main>
 		<div class="upmain">
 			<div class="upmain2">
